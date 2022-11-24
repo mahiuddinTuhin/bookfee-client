@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../../allContext/MyContext";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const name = useContext(UserContext);
-  console.log(name);
+  const { setCategories, categories } = useContext(UserContext);
+
+  console.log(setCategories, categories);
 
   return (
     <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">

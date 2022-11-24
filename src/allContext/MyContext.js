@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 const { createContext } = require("react");
 
 export const UserContext = createContext();
 
 const MyContext = ({ children }) => {
-  const name = {
-    myName: "Ali Jafor",
+  const [categories, setCategories] = useState("");
+  const info = {
+    categories,
+    setCategories,
   };
   return (
     <div>
-      <UserContext.Provider value={name}>{children}</UserContext.Provider>
+      <UserContext.Provider value={info}>{children}</UserContext.Provider>
     </div>
   );
 };

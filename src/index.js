@@ -1,20 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { RouterProvider } from "react-router-dom";
 import MyContext from "./allContext/MyContext";
 import App from "./App";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import router from "./routes/routes";
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router}>
-      <MyContext>
-        <App />
-      </MyContext>
-    </RouterProvider>
+    <MyContext>
+      <App />
+    </MyContext>
   </React.StrictMode>
 );
 

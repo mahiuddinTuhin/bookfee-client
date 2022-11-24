@@ -1,13 +1,18 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { TfiReddit } from "react-icons/tfi";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../allContext/MyContext";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { setCategories, categories } = useContext(UserContext);
+  const { categories, setCategories } = useContext(UserContext);
 
-  console.log(setCategories, categories);
+  useEffect(() => {
+    fetch("http://localhost:5000/booksCat")
+      .then((res) => res.json())
+      .then((data) => setCategories(data));
+  }, []);
 
+  console.log(categories);
   return (
     <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
       <div className="relative flex grid items-center grid-cols-2 lg:grid-cols-3">

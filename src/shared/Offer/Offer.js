@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Offer = () => {
   return (
-    <div>
+    <div className="mb-8">
       <div className="px-8 py-2 bg-gray-800 text-gray-100">
         <div className="flex items-center mx-auto container justify-center md:justify-between py-2">
           <div>

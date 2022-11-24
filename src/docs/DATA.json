@@ -1,32 +1,32 @@
 [
   {
     "title": "Thrilling",
-    "cat-id": "c01",
-    "cat-img": "https://static-01.daraz.com.bd/p/2948a0c1e6142d7796dbb7442dc0318a.jpg"
+    "cat_id": "c01",
+    "cat_img": "https://static_01.daraz.com.bd/p/2948a0c1e6142d7796dbb7442dc0318a.jpg"
   },
   {
     "title": "Crime",
-    "cat-id": "c02",
-    "cat-img": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1650792879i/60871346.jpg"
+    "cat_id": "c02",
+    "cat_img": "https://images_na.ssl_images_amazon.com/images/S/compressed.photo.goodreads.com/books/1650792879i/60871346.jpg"
   },
   {
     "title": "Adventure",
-    "cat-id": "c03",
-    "cat-img": "https://m.media-amazon.com/images/I/51Ic9Gt8FvL._AC_SY780_.jpg"
+    "cat_id": "c03",
+    "cat_img": "https://m.media_amazon.com/images/I/51Ic9Gt8FvL._AC_SY780_.jpg"
   },
   {
     "title": "Science Fiction",
-    "cat-id": "c04",
-    "cat-img": "https://i.ytimg.com/vi/UlFV32kAzdQ/maxresdefault.jpg"
+    "cat_id": "c04",
+    "cat_img": "https://i.ytimg.com/vi/UlFV32kAzdQ/maxresdefault.jpg"
   },
   {
     "title": "Romantic",
-    "cat-id": "c05",
-    "cat-img": "https://media.karousell.com/media/photos/products/2022/7/9/colleen_hoover_books_collectio_1657327143_9773d36d_progressive.jpg"
+    "cat_id": "c05",
+    "cat_img": "https://media.karousell.com/media/photos/products/2022/7/9/colleen_hoover_books_collectio_1657327143_9773d36d_progressive.jpg"
   },
   {
     "title": "Horror",
-    "cat-id": "c06",
-    "cat-img": "https://bookriot.com/wp-content/uploads/2022/03/horror-books-underground-1280x720.jpg"
+    "cat_id": "c06",
+    "cat_img": "https://bookriot.com/wp_content/uploads/2022/03/horror_books_underground_1280x720.jpg"
   }
 ]

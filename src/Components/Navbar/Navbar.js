@@ -1,3 +1,6 @@
+import { Menu, MenuButton, MenuItem } from "@szhsin/react-menu";
+import "@szhsin/react-menu/dist/index.css";
+import "@szhsin/react-menu/dist/transitions/slide.css";
 import { useContext, useEffect, useState } from "react";
 import { TfiReddit } from "react-icons/tfi";
 import { Link } from "react-router-dom";
@@ -28,14 +31,21 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link
+            <div
               to="/"
               aria-label="Our product"
               title="Our product"
               className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
             >
-              Categories
-            </Link>
+              <Menu menuButton={<MenuButton>Categories</MenuButton>} transition>
+                {categories?.map((cat) => (
+                  <MenuItem>
+                    {/* const id= cat?.cat-id; */}
+                    <Link to={`books/${cat.cat_id}`}>{cat.title}</Link>
+                  </MenuItem>
+                ))}
+              </Menu>
+            </div>
           </li>
           <li>
             <Link
@@ -145,18 +155,30 @@ const Navbar = () => {
                         title="Our product"
                         className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
                       >
-                        Product
+                        Home
                       </Link>
                     </li>
                     <li>
-                      <Link
+                      <div
                         to="/"
                         aria-label="Our product"
                         title="Our product"
                         className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
                       >
-                        Features
-                      </Link>
+                        <Menu
+                          menuButton={<MenuButton>Categories</MenuButton>}
+                          transition
+                        >
+                          {categories?.map((cat) => (
+                            <MenuItem>
+                              {/* const id= cat?.cat-id; */}
+                              <Link to={`books/${cat.cat_id}`}>
+                                {cat.title}
+                              </Link>
+                            </MenuItem>
+                          ))}
+                        </Menu>
+                      </div>
                     </li>
                     <li>
                       <Link

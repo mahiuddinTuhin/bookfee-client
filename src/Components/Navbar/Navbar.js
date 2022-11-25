@@ -13,9 +13,8 @@ const Navbar = () => {
     fetch("http://localhost:5000/booksCat")
       .then((res) => res.json())
       .then((data) => setCategories(data));
-  }, []);
+  }, [setCategories]);
 
-  console.log(categories);
   return (
     <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
       <div className="relative flex grid items-center grid-cols-2 lg:grid-cols-3">
@@ -38,12 +37,13 @@ const Navbar = () => {
               className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
             >
               <Menu menuButton={<MenuButton>Categories</MenuButton>} transition>
-                {categories?.map((cat) => (
-                  <MenuItem>
-                    {/* const id= cat?.cat-id; */}
-                    <Link to={`books/${cat.cat_id}`}>{cat.title}</Link>
-                  </MenuItem>
-                ))}
+                {categories &&
+                  categories?.map((cat) => (
+                    <MenuItem key={cat.cat_id}>
+                      {/* const id= cat?.cat-id; */}
+                      <Link to={`category/${cat.cat_id}`}>{cat.title}</Link>
+                    </MenuItem>
+                  ))}
               </Menu>
             </div>
           </li>
@@ -72,7 +72,7 @@ const Navbar = () => {
         <ul className="flex items-center hidden ml-auto space-x-8 lg:flex">
           <li>
             <Link
-              to="/"
+              to="/login"
               aria-label="Sign in"
               title="Sign in"
               className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
@@ -82,7 +82,7 @@ const Navbar = () => {
           </li>
           <li>
             <Link
-              to="/"
+              to="/signup"
               className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
               aria-label="Sign up"
               title="Sign up"
@@ -192,7 +192,7 @@ const Navbar = () => {
                     </li>
                     <li>
                       <Link
-                        to="/"
+                        to="/login"
                         aria-label="Sign in"
                         title="Sign in"
                         className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
@@ -202,7 +202,7 @@ const Navbar = () => {
                     </li>
                     <li>
                       <Link
-                        to="/"
+                        to="/signup"
                         className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
                         aria-label="Sign up"
                         title="Sign up"

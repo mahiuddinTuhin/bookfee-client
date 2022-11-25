@@ -1,15 +1,15 @@
 import { useContext } from "react";
 import { UserContext } from "../../allContext/MyContext";
-import img from "./../../docs/Lo-fi concept-bro.png";
-const Login = () => {
-  const { signInWithEmail } = useContext(UserContext);
+import img from "./../../docs/Telecommuting-pana.png";
+export const Signup = () => {
+  const { createUser } = useContext(UserContext);
 
-  const handleLoginSubmit = (event) => {
+  const handleSignUpSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    signInWithEmail(email, password)
+    createUser(email, password)
       .then((result) => console.log(result))
       .catch((err) => console.log(err));
   };
@@ -32,14 +32,16 @@ const Login = () => {
           />
         </svg>
         <div className="relative px-4 py-16 mx-auto overflow-hidden sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-          <div className="flex flex-col items-center justify-between xl:flex-row-reverse">
+          <div className="flex flex-col items-center justify-between xl:flex-row">
             <div className="w-full max-w-xl mb-12 xl:mb-0 xl:pr-16 xl:w-7/12">
               <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-white sm:text-4xl sm:leading-none">
                 Be Bookfee <br className="hidden md:block" />
                 to pursue your knowledge
               </h2>
               <p className="max-w-xl mb-4 text-base text-gray-200 md:text-lg">
-                Time to uprise the level of your knowledge with the stream of changing world. Only knowledge can uprise you to the highest position.
+                Time to uprise the level of your knowledge with the stream of
+                changing world. Only knowledge can uprise you to the highest
+                position.
               </p>
               <a
                 href="/"
@@ -59,9 +61,9 @@ const Login = () => {
             <div className="w-full max-w-xl xl:px-8 xl:w-5/12">
               <div className="bg-white rounded shadow-2xl p-7 sm:p-10">
                 <h3 className="text-slate-900 mb-4 text-xl font-semibold sm:text-center sm:mb-6 sm:text-2xl">
-                  Sign in
+                  Sign up
                 </h3>
-                <form onSubmit={(event) => handleLoginSubmit(event)}>
+                <form onSubmit={(event) => handleSignUpSubmit(event)}>
                   <div className="mb-1 sm:mb-2">
                     <label
                       htmlFor="email"
@@ -99,7 +101,7 @@ const Login = () => {
                       type="submit"
                       className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
                     >
-                      Login
+                      Signup
                     </button>
                   </div>
                   <p className="text-xs text-gray-600 sm:text-sm">
@@ -115,4 +117,3 @@ const Login = () => {
     </div>
   );
 };
-export default Login;

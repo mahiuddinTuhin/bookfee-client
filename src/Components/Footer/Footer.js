@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <div className="px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
-      <div className="grid gap-10 row-gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-10 row-gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4 justify-items-start">
         <div className="sm:col-span-2">
           <Link
             to="/"
@@ -16,7 +16,7 @@ const Footer = () => {
               Bookfee
             </span>
           </Link>
-          <div className="mt-6 lg:max-w-sm">
+          <div className="mt-6 lg:max-w-sm text-justify">
             <p className="text-sm text-gray-800">
               Purchasing and selling old books making a generous generation with
               profounding a great source of knowledge and commitmentship to
@@ -72,7 +72,7 @@ const Footer = () => {
           <span className="text-base font-bold tracking-wide text-gray-900">
             Social
           </span>
-          <div className="flex items-center mt-1 space-x-3">
+          <div className="flex items-center mt-1 space-x-3 justify-center">
             <Link
               to="/"
               className="text-gray-500 transition-colors duration-300 hover:text-purple-400"

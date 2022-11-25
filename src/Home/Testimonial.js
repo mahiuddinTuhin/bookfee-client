@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Testimonial = () => {
   return (
     <div>
-      <section className="my-8 dark:bg-gray-800 dark:text-gray-100 border-t-2 py-24">
+      <section className=" dark:bg-gray-800 dark:text-gray-100  py-24">
         <div className="container flex flex-col items-center p-4 mx-auto space-y-6 md:p-8">
           <svg
             xmlns="http://www.w3.org/2000/svg"

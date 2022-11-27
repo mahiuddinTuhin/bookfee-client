@@ -3,17 +3,70 @@ import "@szhsin/react-menu/dist/index.css";
 import "@szhsin/react-menu/dist/transitions/slide.css";
 import { useContext, useEffect, useState } from "react";
 import { TfiReddit } from "react-icons/tfi";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { UserContext } from "../../allContext/MyContext";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { categories, setCategories } = useContext(UserContext);
+  const { categories, setCategories, logout, user } = useContext(UserContext);
 
+  const handleLogout = () => {
+    return logout()
+      .then()
+      .catch((err) => console.log(err));
+  };
   useEffect(() => {
     fetch("http://localhost:5000/booksCat")
       .then((res) => res.json())
       .then((data) => setCategories(data));
   }, [setCategories]);
+
+  const userAuthenticity = user ? (
+    <>
+      <li>
+        <button
+          onClick={handleLogout}
+          aria-label="Sign out"
+          title="Sign out"
+          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
+        >
+          Sign out
+        </button>
+      </li>
+      <li>
+        <NavLink
+          to="/profile"
+          aria-label="Sign out"
+          title="Sign out"
+          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
+        >
+          Profile
+        </NavLink>
+      </li>
+    </>
+  ) : (
+    <>
+      <li>
+        <Link
+          to="/login"
+          aria-label="Sign in"
+          title="Sign in"
+          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
+        >
+          Sign in
+        </Link>
+      </li>
+      <li>
+        <Link
+          to="/signup"
+          className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
+          aria-label="Sign up"
+          title="Sign up"
+        >
+          Sign up
+        </Link>
+      </li>
+    </>
+  );
 
   return (
     <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
@@ -70,7 +123,8 @@ const Navbar = () => {
           </span>
         </Link>
         <ul className="flex items-center hidden ml-auto space-x-8 lg:flex">
-          <li>
+          {userAuthenticity}
+          {/* <li>
             <Link
               to="/login"
               aria-label="Sign in"
@@ -89,7 +143,7 @@ const Navbar = () => {
             >
               Sign up
             </Link>
-          </li>
+          </li> */}
         </ul>
         <div className="ml-auto lg:hidden">
           <button

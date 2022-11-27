@@ -1,32 +1,19 @@
 [
   {
-    "title": "Thrilling",
-    "cat_id": "c01",
-    "cat_img": "https://static_01.daraz.com.bd/p/2948a0c1e6142d7796dbb7442dc0318a.jpg"
-  },
-  {
-    "title": "Crime",
+    "name": "The Devil in the White City",
+    "image": "https://m.media-amazon.com/images/I/914+qkfv5RL.jpg",
+    "location": "Dhaka",
+    "resalePrice": "$23",
+    "originalPrice": "$56",
+    "used": "1Years",
+    "postTime": "25th november,2022",
+    "sellerName": "Ali Dawud Haydar",
+    "sellerEmail": "hawa@hawa.com",
+    "verified": "true",
+    "bookCat": "Crime",
+    "ratings": "4.4",
     "cat_id": "c02",
-    "cat_img": "https://images_na.ssl_images_amazon.com/images/S/compressed.photo.goodreads.com/books/1650792879i/60871346.jpg"
-  },
-  {
-    "title": "Adventure",
-    "cat_id": "c03",
-    "cat_img": "https://m.media_amazon.com/images/I/51Ic9Gt8FvL._AC_SY780_.jpg"
-  },
-  {
-    "title": "Science Fiction",
-    "cat_id": "c04",
-    "cat_img": "https://i.ytimg.com/vi/UlFV32kAzdQ/maxresdefault.jpg"
-  },
-  {
-    "title": "Romantic",
-    "cat_id": "c05",
-    "cat_img": "https://media.karousell.com/media/photos/products/2022/7/9/colleen_hoover_books_collectio_1657327143_9773d36d_progressive.jpg"
-  },
-  {
-    "title": "Horror",
-    "cat_id": "c06",
-    "cat_img": "https://bookriot.com/wp_content/uploads/2022/03/horror_books_underground_1280x720.jpg"
+    "writer": "Daniyel Hutz",
+    "intro": "In Gotham City, mentally troubled comedian Arthur Fleck is disregarded and mistreated by society. He then embarks on a downward spiral of revolution and bloody crime. This path brings him face-to-face with his alter-ego: the Joker."
   }
 ]

@@ -1,20 +1,50 @@
 import { useContext } from "react";
+// react icon
+import { FcGoogle } from "react-icons/fc";
+import { MdOutlineFacebook } from "react-icons/md";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { UserContext } from "../../allContext/MyContext";
+import Home from "../../Home/Home";
 import img from "./../../docs/Lo-fi concept-bro.png";
-const Login = () => {
-  const { signInWithEmail } = useContext(UserContext);
 
+const Login = () => {
+  const { signInWithEmail, user, googleSignIn, facebookSignIn } =
+    useContext(UserContext);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || "/";
+
+  // sign in with email and password handle
   const handleLoginSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
     signInWithEmail(email, password)
+      .then(() => {
+        form.reset();
+        navigate(from, { replace: true });
+      })
+      .catch((err) => console.log(err));
+    navigate("/");
+  };
+
+  // sign in with google pop up
+  const handleGoogleSignIn = () => {
+    return googleSignIn()
+      .then(() => console.log("google sign in successful"))
+      .catch((err) => console.log(err));
+  };
+
+  // sign in with facebook pop up
+  const handleFacebookSignIn = () => {
+    return facebookSignIn()
       .then((result) => console.log(result))
       .catch((err) => console.log(err));
   };
 
-  return (
+  return !user ? (
     <div className="relative">
       <img
         src={img}
@@ -39,7 +69,9 @@ const Login = () => {
                 to pursue your knowledge
               </h2>
               <p className="max-w-xl mb-4 text-base text-gray-200 md:text-lg">
-                Time to uprise the level of your knowledge with the stream of changing world. Only knowledge can uprise you to the highest position.
+                Time to uprise the level of your knowledge with the stream of
+                changing world. Only knowledge can uprise you to the highest
+                position.
               </p>
               <a
                 href="/"
@@ -60,6 +92,18 @@ const Login = () => {
               <div className="bg-white rounded shadow-2xl p-7 sm:p-10">
                 <h3 className="text-slate-900 mb-4 text-xl font-semibold sm:text-center sm:mb-6 sm:text-2xl">
                   Sign in
+                </h3>
+                <h3 className="flex items-center justify-center text-gray-900 mb-4">
+                  Sign in with{" "}
+                  <span onClick={handleGoogleSignIn} className="ml-3 text-3xl">
+                    <FcGoogle />
+                  </span>
+                  <span
+                    onClick={handleFacebookSignIn}
+                    className="ml-3 text-4xl text-blue-700"
+                  >
+                    <MdOutlineFacebook />
+                  </span>
                 </h3>
                 <form onSubmit={(event) => handleLoginSubmit(event)}>
                   <div className="mb-1 sm:mb-2">
@@ -102,6 +146,12 @@ const Login = () => {
                       Login
                     </button>
                   </div>
+                  <p className="text-xs text-fuchsia-800 sm:text-sm mb-2">
+                    Create new account ?{" "}
+                    <Link className="hover:text-green-600" to="/signup">
+                      Signup
+                    </Link>
+                  </p>
                   <p className="text-xs text-gray-600 sm:text-sm">
                     We respect your privacy. We never share your private
                     information.
@@ -113,6 +163,8 @@ const Login = () => {
         </div>
       </div>
     </div>
+  ) : (
+    <Home />
   );
 };
 export default Login;

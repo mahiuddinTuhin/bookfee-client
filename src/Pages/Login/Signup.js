@@ -1,9 +1,10 @@
 import { useContext } from "react";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { UserContext } from "../../allContext/MyContext";
 import img from "./../../docs/Telecommuting-pana.png";
 export const Signup = () => {
-  const { createUser } = useContext(UserContext);
-
+  const { createUser, user } = useContext(UserContext);
+  const navigate = useNavigate();
   const handleSignUpSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -12,7 +13,12 @@ export const Signup = () => {
     createUser(email, password)
       .then((result) => console.log(result))
       .catch((err) => console.log(err));
+    navigate("/");
   };
+
+  if (user) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <div className="relative">
@@ -104,6 +110,12 @@ export const Signup = () => {
                       Signup
                     </button>
                   </div>
+                  <p className="text-xs text-fuchsia-800 sm:text-sm mb-2">
+                    Already have an account ?{" "}
+                    <Link className="hover:text-green-600" to="/login">
+                      Login
+                    </Link>
+                  </p>
                   <p className="text-xs text-gray-600 sm:text-sm">
                     We respect your privacy. We never share your private
                     information.

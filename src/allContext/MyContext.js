@@ -19,7 +19,9 @@ const googleProvider = new GoogleAuthProvider();
 // auth provider for facebook
 const facebookProvider = new FacebookAuthProvider();
 
+// user context to use context
 export const UserContext = createContext();
+
 const MyContext = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState("");

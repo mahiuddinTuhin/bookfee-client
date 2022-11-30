@@ -4,6 +4,8 @@ import Book from "./Book";
 
 const SingleCategory = () => {
   const books = useLoaderData();
+  // const { categories } = useContext(UserContext);
+  // const cat = categories.find();
 
   return (
     <div className="bg-gray-900 py-4">

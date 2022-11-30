@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 // react icon
 import { FcGoogle } from "react-icons/fc";
 import { MdOutlineFacebook } from "react-icons/md";
@@ -8,6 +8,8 @@ import Home from "../../Home/Home";
 import img from "./../../docs/Lo-fi concept-bro.png";
 
 const Login = () => {
+  const [userType, setUserType] = useState("");
+
   const { signInWithEmail, user, googleSignIn, facebookSignIn } =
     useContext(UserContext);
 
@@ -15,32 +17,79 @@ const Login = () => {
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
 
+  const addUserToDB = (email, userType) => {
+    fetch("http://localhost:5000/user", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({ email, userType }),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log("successful"));
+  };
+
   // sign in with email and password handle
   const handleLoginSubmit = (event) => {
     event.preventDefault();
-    const form = event.target;
-    const email = form.email.value;
-    const password = form.password.value;
+    const htmlForm = event.target;
+    const email = htmlForm.email.value;
+
+    const password = htmlForm.password.value;
+
+    // signin with email and password with firebase Authentication system
     signInWithEmail(email, password)
-      .then(() => {
-        form.reset();
-        navigate(from, { replace: true });
+      .then((result) => {
+        htmlForm.reset();
+
+        const currentUser = {
+          email: result.user.email,
+        };
+        // getting jwt token
+        fetch("http://localhost:5000/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            localStorage.setItem("token", data.token);
+            // post user detail in database
+            addUserToDB(email, userType);
+            // navigate to previous path
+            navigate(from, { replace: true });
+          });
       })
       .catch((err) => console.log(err));
-    navigate("/");
+    // navigate("/");
   };
 
   // sign in with google pop up
   const handleGoogleSignIn = () => {
     return googleSignIn()
-      .then(() => console.log("google sign in successful"))
+      .then((result) => {
+        // post user detail in database
+        const email = result.user.email;
+        const type = "buyer";
+        addUserToDB(email, type);
+        navigate(from, { replace: true });
+      })
       .catch((err) => console.log(err));
   };
 
   // sign in with facebook pop up
   const handleFacebookSignIn = () => {
     return facebookSignIn()
-      .then((result) => console.log(result))
+      .then((result) => {
+        // post user detail in database
+        const email = result.user.email;
+        const type = "buyer";
+        addUserToDB(email, type);
+        navigate(from, { replace: true });
+      })
       .catch((err) => console.log(err));
   };
 
@@ -121,6 +170,58 @@ const Login = () => {
                       id="email"
                       name="email"
                     />
+                  </div>
+                  <div
+                    className="mb-1 sm:mb-2"
+                    onChange={(event) => setUserType(event.target.value)}
+                  >
+                    <div className="max-w-lg mx-auto">
+                      <h2 className="text-slate-800 lg:text-xl inline-block mb-1 font-medium mt-4">
+                        Select Account type:{" "}
+                      </h2>
+                      <fieldset className="mb-5">
+                        <legend className="sr-only">userType</legend>
+
+                        <div className="flex items-center mb-4">
+                          <input
+                            required
+                            id="user-option-2"
+                            type="radio"
+                            name="userType"
+                            value="buyer"
+                            className="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300"
+                            aria-labelledby="user-option-2"
+                            aria-describedby="user-option-2"
+                          />
+                          <label
+                            htmlFor="user-option-2"
+                            className="text-sm font-medium text-gray-900 ml-2 block"
+                          >
+                            Buyer
+                          </label>
+                        </div>
+
+                        <div className="flex items-center mb-4">
+                          <input
+                            id="user-option-3"
+                            type="radio"
+                            name="userType"
+                            value="seller"
+                            className="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300"
+                            aria-labelledby="user-option-3"
+                            aria-describedby="user-option-3"
+                          />
+                          <label
+                            htmlFor="user-option-3"
+                            className="text-sm font-medium text-gray-900 ml-2 block"
+                          >
+                            Seller
+                          </label>
+                        </div>
+                      </fieldset>
+                    </div>
+
+                    <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
                   </div>
                   <div className="mb-1 sm:mb-2">
                     <label

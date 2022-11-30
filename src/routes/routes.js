@@ -3,6 +3,7 @@ import PrivateRoute from "../Components/PrivateRoute/PrivateRoute";
 import Home from "../Home/Home";
 import Main from "../Layout/Main";
 import Error404 from "../Pages/404/Error404";
+import Blog from "../Pages/Blog/Blog";
 import Login from "../Pages/Login/Login";
 import { Signup } from "../Pages/Login/Signup";
 import Profile from "../Pages/Profile/Profile";
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: "/signup",
         element: <Signup />,
+      },
+      {
+        path: "/blog",
+        element: <Blog />,
       },
       {
         path: "/profile",

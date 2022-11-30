@@ -1,8 +1,41 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { MdOutlineVerifiedUser, MdVerifiedUser } from "react-icons/md";
+import { UserContext } from "../../allContext/MyContext";
 import "./book.css";
 const Book = ({ b }) => {
-  const [showModal, setShowModal] = React.useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const { user } = useContext(UserContext);
+  // console.log(b);
+
+  const email = user?.email;
+
+  // handle order confirming btn
+  const handleOrderConfirm = (e) => {
+    // getting form value
+    const form = e?.target;
+    const name = form?.name?.value;
+    const address = form?.address?.value;
+    const phone = form?.phone?.value;
+    const profession = form?.profession?.value;
+
+    // fetch to store the data in database on the behalf of the user's database
+
+    fetch(`http://localhost:5000/user/${email}`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ name, address, phone, profession, b }),
+    })
+      .then((res) => {
+        console.log(res.status);
+        return res.json();
+      })
+      .then((data) => console.log(data));
+
+    console.log("fetch crossed");
+    setShowModal(false);
+  };
 
   return (
     <div className="my-24 w-full">
@@ -17,7 +50,7 @@ const Book = ({ b }) => {
                 src={b?.image}
                 alt="pic"
                 className="h-72 w-56 rounded-md shadow-2xl transform -translate-y-4 border-4 
-            border-gray-300 shadow-lg"
+            border-gray-300 "
               />
             </div>
 
@@ -66,49 +99,121 @@ const Book = ({ b }) => {
                 {/* show modal section */}
                 {showModal ? (
                   <>
-                    <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+                    <div
+                      className=" justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+                      style={{
+                        backgroundImage: `url(${b?.image})`,
+                      }}
+                    >
                       <div className="relative w-auto my-6 mx-auto max-w-3xl">
                         {/*content*/}
                         <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                           {/*header*/}
-                          <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-                            <h3 className="text-3xl font-semibold">{b.name}</h3>
-                            <button
-                              className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-                              onClick={() => setShowModal(false)}
-                            >
-                              <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
-                                ×
-                              </span>
-                            </button>
-                          </div>
+
                           {/*body*/}
                           <div className="relative p-6 flex-auto">
-                            <p className="my-4 text-slate-500 text-lg leading-relaxed">
-                              I always felt like I could do anything. That’s the
-                              main thing people are controlled by! Thoughts-
-                              their perception of themselves! They're slowed
-                              down by their perception of themselves. If you're
-                              taught you can’t do anything, you won’t do
-                              anything. I was taught I could do everything.
-                            </p>
-                          </div>
-                          {/*footer*/}
-                          <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
-                            <button
-                              className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                              type="button"
-                              onClick={() => setShowModal(false)}
-                            >
-                              Close
-                            </button>
-                            <button
-                              className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                              type="button"
-                              onClick={() => setShowModal(false)}
-                            >
-                              Save Changes
-                            </button>
+                            <div>
+                              <section
+                                className="p-6 dark:bg-gray-800 dark:text-gray-50"
+                                style={{
+                                  backgroundImage: `url(${b?.image})`,
+                                }}
+                              >
+                                <form
+                                  onSubmit={(event) =>
+                                    handleOrderConfirm(event)
+                                  }
+                                  noValidate=""
+                                  action=""
+                                  className="container flex flex-col mx-auto space-y-12 ng-untouched ng-pristine ng-valid "
+                                >
+                                  <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm dark:bg-gray-900  opacity-90">
+                                    <div className="space-y-2 col-span-full lg:col-span-1">
+                                      <p className="text-xl">
+                                        Personal Inormation
+                                      </p>
+                                      <p className="text-xs text-left text-slate-300">
+                                        Add the require information so that we
+                                        can verify and ask seller to directly or
+                                        by curier send your book.
+                                      </p>
+                                    </div>
+                                    <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
+                                      <div className="col-span-full sm:col-span-3">
+                                        <input
+                                          required
+                                          id="fullName"
+                                          type="text"
+                                          name="fullName"
+                                          placeholder="Full Name"
+                                          className="py-1 pl-2 mt-2 w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
+                                        />
+                                      </div>
+                                      <div className="col-span-full sm:col-span-3">
+                                        <input
+                                          id="email"
+                                          required
+                                          type="email"
+                                          disabled
+                                          placeholder="Email"
+                                          name="email"
+                                          defaultValue={user?.email}
+                                          className="py-1 pl-2 mt-2 w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
+                                          data-temp-mail-org="0"
+                                        />
+                                      </div>
+                                      <div className="col-span-full sm:col-span-3">
+                                        <input
+                                          required
+                                          id="profession"
+                                          name="profession"
+                                          type="text"
+                                          placeholder="profession"
+                                          className="py-1 pl-2 mt-2 w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
+                                          data-temp-mail-org="0"
+                                        />
+                                      </div>
+                                      <div className="col-span-full">
+                                        <input
+                                          required
+                                          id="address"
+                                          name="address"
+                                          type="text"
+                                          placeholder=""
+                                          className="py-1 pl-2 mt-2 w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
+                                        />
+                                      </div>
+                                      <div className="col-span-full sm:col-span-2">
+                                        <input
+                                          required
+                                          id="phone"
+                                          name="phone"
+                                          type="number"
+                                          placeholder="+880140404040"
+                                          className="py-1 pl-2 mt-2 w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
+                                        />
+                                      </div>
+                                      <div className="col-span-full flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+                                        <button
+                                          className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                          type="submit"
+                                          onClick={() => setShowModal(false)}
+                                        >
+                                          Cancel order
+                                        </button>
+                                        <button
+                                          className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                          type="submit"
+                                        >
+                                          Order Now
+                                        </button>
+                                      </div>
+                                    </div>
+                                  </fieldset>
+                                  `
+                                </form>
+                              </section>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -145,6 +250,8 @@ const Book = ({ b }) => {
               </span>
             </h4>
           </div>
+
+          {/* review section */}
           <div className="flex justify-between items-center px-4 mb-4 w-full text-zinc-800">
             <div className="flex justify-between items-center px-4 mb-4 w-full">
               <div className="flex">

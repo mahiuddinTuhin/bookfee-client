@@ -117,7 +117,7 @@ const Login = () => {
                 Be Bookfee <br className="hidden md:block" />
                 to pursue your knowledge
               </h2>
-              <p className="max-w-xl mb-4 text-base text-gray-200 md:text-lg">
+              <p className="max-w-xl mb-4 text-base text-white  md:text-lg">
                 Time to uprise the level of your knowledge with the stream of
                 changing world. Only knowledge can uprise you to the highest
                 position.
@@ -142,7 +142,10 @@ const Login = () => {
                 <h3 className="text-slate-900 mb-4 text-xl font-semibold sm:text-center sm:mb-6 sm:text-2xl">
                   Sign in
                 </h3>
-                <h3 className="flex items-center justify-center text-gray-900 mb-4">
+                <h3
+                  className="flex items-center justify-center 
+                text-gray-800 mb-4"
+                >
                   Sign in with{" "}
                   <span onClick={handleGoogleSignIn} className="ml-3 text-3xl">
                     <FcGoogle />
@@ -166,7 +169,7 @@ const Login = () => {
                       placeholder="john.doe@example.org"
                       required
                       type="text"
-                      className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
+                      className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline text-gray-800"
                       id="email"
                       name="email"
                     />
@@ -175,7 +178,7 @@ const Login = () => {
                     className="mb-1 sm:mb-2"
                     onChange={(event) => setUserType(event.target.value)}
                   >
-                    <div className="max-w-lg mx-auto">
+                    <div className="max-w-lg mx-auto ">
                       <h2 className="text-slate-800 lg:text-xl inline-block mb-1 font-medium mt-4">
                         Select Account type:{" "}
                       </h2>
@@ -189,13 +192,13 @@ const Login = () => {
                             type="radio"
                             name="userType"
                             value="buyer"
-                            className="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300"
+                            className="radio border-black checked:bg-gray-900"
                             aria-labelledby="user-option-2"
                             aria-describedby="user-option-2"
                           />
                           <label
                             htmlFor="user-option-2"
-                            className="text-sm font-medium text-gray-900 ml-2 block"
+                            className="text-sm font-medium text-green-900  ml-2 block"
                           >
                             Buyer
                           </label>
@@ -207,13 +210,13 @@ const Login = () => {
                             type="radio"
                             name="userType"
                             value="seller"
-                            className="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300"
+                            className="radio border-black checked:bg-gray-900"
                             aria-labelledby="user-option-3"
                             aria-describedby="user-option-3"
                           />
                           <label
                             htmlFor="user-option-3"
-                            className="text-sm font-medium text-gray-900 ml-2 block"
+                            className="text-sm font-medium   ml-2 block  text-gray-800"
                           >
                             Seller
                           </label>
@@ -234,7 +237,7 @@ const Login = () => {
                       placeholder="********"
                       required
                       type="password"
-                      className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
+                      className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline text-gray-800"
                       id="password"
                       name="password"
                     />
@@ -253,7 +256,7 @@ const Login = () => {
                       Signup
                     </Link>
                   </p>
-                  <p className="text-xs text-gray-600 sm:text-sm">
+                  <p className="text-xs text-white  sm:text-sm">
                     We respect your privacy. We never share your private
                     information.
                   </p>

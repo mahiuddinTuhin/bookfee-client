@@ -3,22 +3,22 @@ import React from "react";
 const Blog = () => {
   return (
     <div className=" ">
-      <section className="min-h-screen dark:bg-gray-800 dark:text-gray-100">
+      <section className="min-h-screen      text-white">
         <div className="container flex flex-col justify-center px-4 py-8 mx-auto md:p-8">
           <h2 className="text-2xl font-semibold sm:text-4xl">
             Frequently Asked Questions
           </h2>
-          <p className="mt-4 mb-8 dark:text-gray-400">
+          <p className="mt-4 mb-8  text-white ">
             Sagittis tempor donec id vestibulum viverra. Neque condimentum
             primis orci at lacus amet bibendum.
           </p>
           <div className="space-y-4">
-            <details className="w-full border rounded-lg">
+            <details className="w-full border rounded-lg  hover:border-rose-400">
               <summary className="px-4 py-6 focus:outline-none focus-visible:ring-violet-400">
                 What are the different ways to manage a state in a React
                 application?
               </summary>
-              <p className=" px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-400">
+              <p className=" px-4 py-6 pt-0 ml-4 -mt-4  text-white ">
                 In React apps, there are at least seven ways to handle the
                 state. Let us briefly explore a few of them in this part.
                 <ul className="flex flex-col items-center">
@@ -59,11 +59,11 @@ const Blog = () => {
                 </ul>
               </p>
             </details>
-            <details className="w-full border rounded-lg">
+            <details className="w-full border rounded-lg  hover:border-rose-400">
               <summary className="px-4 py-6 focus:outline-none focus-visible:ring-violet-400">
                 How does prototypical inheritance work?
               </summary>
-              <p className=" px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-400">
+              <p className=" px-4 py-6 pt-0 ml-4 -mt-4  text-white ">
                 The Prototypal Inheritance is a feature in javascript used to
                 add methods and properties in objects. It is a method by which
                 an object can inherit the properties and methods of another
@@ -71,11 +71,11 @@ const Blog = () => {
                 of an object, we use Object. getPrototypeOf and Object.
               </p>
             </details>
-            <details className="w-full border rounded-lg">
+            <details className="w-full border rounded-lg  hover:border-rose-400">
               <summary className="px-4 py-6 focus:outline-none focus-visible:ring-violet-400">
                 What is a unit test? Why should we write unit tests?
               </summary>
-              <p className=" px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-400">
+              <p className=" px-4 py-6 pt-0 ml-4 -mt-4  text-white ">
                 The main objective of unit testing is to isolate written code to
                 test and determine if it works as intended. Unit testing is an
                 important step in the development process, because if done
@@ -83,11 +83,11 @@ const Blog = () => {
                 more difficult to find in later testing stages.
               </p>
             </details>
-            <details className="w-full border rounded-lg">
+            <details className="w-full border rounded-lg  hover:border-rose-400">
               <summary className="px-4 py-6 focus:outline-none focus-visible:ring-violet-400">
                 React vs. Angular vs. Vue?
               </summary>
-              <p className=" px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-400">
+              <p className=" px-4 py-6 pt-0 ml-4 -mt-4  text-white ">
                 Vue provides higher customizability and hence is easier to learn
                 than Angular or React. Further, Vue has an overlap with Angular
                 and React with respect to their functionality like the use of

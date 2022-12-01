@@ -10,7 +10,7 @@ const Error404 = () => {
             <div className="md:flex justify-between items-center">
               <div className="flex justify-between items-center">
                 <div className="md:hidden">
-                  <button className="text-gray-800 focus:outline-none">
+                  <button className="text-white  focus:outline-none">
                     <svg
                       className="h-12 w-12"
                       viewBox="0 0 24 24"
@@ -48,7 +48,7 @@ const Error404 = () => {
         <div className="container mx-auto px-6 md:px-12 relative z-10 flex items-center py-32">
           <div className="container mx-auto px-6 flex flex-col justify-between items-center relative">
             <div className="flex w-full items-center justify-center space-x-12 flex-col md:flex-row mb-16 md:mb-8">
-              <h1 className="font-thin text-center text-6xl text-gray-800">
+              <h1 className="font-thin text-center text-6xl text-white ">
                 GOT LOST ?
               </h1>
               <Link

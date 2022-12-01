@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Team = () => {
   return (
     <div>
-      <section className="py-6 dark:bg-gray-800 dark:text-gray-100">
+      <section className="py-6      text-gray-50">
         <div className="container flex flex-col items-center justify-center p-4 mx-auto sm:p-10">
           <p className="p-2 text-sm font-medium tracking-wider text-center uppercase">
             Development team
@@ -13,10 +13,10 @@ const Team = () => {
             The talented people behind the scenes
           </h1>
           <div className="flex flex-row flex-wrap-reverse justify-center mt-8">
-            <div className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 dark:bg-gray-100 dark:text-gray-800">
+            <div className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64  bg-gray-100  text-gray-800 ">
               <img
                 alt=""
-                className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500"
+                className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full  "
                 src="https://spunout.ie/wp-content/uploads/elementor/thumbs/iStock-157141027-pws9p2g5rxsg18vvoz8mdmukoj98im9nx5gpim9qk8.jpg"
               />
               <div className="flex-1 my-4">
@@ -30,7 +30,7 @@ const Team = () => {
                   rel="noopener noreferrer"
                   to="/"
                   title="Email"
-                  className="dark:text-gray-900 hover:dark:text-violet-400"
+                  className=" text-gray-800  hover: text-violet-400"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +46,7 @@ const Team = () => {
                   rel="noopener noreferrer"
                   to="/"
                   title="Twitter"
-                  className="dark:text-gray-900 hover:dark:text-violet-400"
+                  className=" text-gray-800  hover: text-violet-400"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -61,7 +61,7 @@ const Team = () => {
                   rel="noopener noreferrer"
                   to="/"
                   title="LinkedIn"
-                  className="dark:text-gray-900 hover:dark:text-violet-400"
+                  className=" text-gray-800  hover: text-violet-400"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -76,7 +76,7 @@ const Team = () => {
                   rel="noopener noreferrer"
                   to="/"
                   title="GitHub"
-                  className="dark:text-gray-900 hover:dark:text-violet-400"
+                  className=" text-gray-800  hover: text-violet-400"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -89,10 +89,10 @@ const Team = () => {
                 </Link>
               </div>
             </div>
-            <div className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 dark:bg-gray-100 dark:text-gray-800">
+            <div className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64  bg-gray-100  text-gray-800 ">
               <img
                 alt=""
-                className="flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500"
+                className="flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full  "
                 src="https://spunout.ie/wp-content/uploads/elementor/thumbs/iStock-157141027-pws9p2g5rxsg18vvoz8mdmukoj98im9nx5gpim9qk8.jpg"
               />
               <div className="flex-1 my-4">
@@ -106,7 +106,7 @@ const Team = () => {
                   rel="noopener noreferrer"
                   to="/"
                   title="Email"
-                  className="dark:text-gray-900 hover:dark:text-violet-400"
+                  className=" text-gray-800  hover: text-violet-400"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -122,7 +122,7 @@ const Team = () => {
                   rel="noopener noreferrer"
                   to="/"
                   title="Twitter"
-                  className="dark:text-gray-900 hover:dark:text-violet-400"
+                  className=" text-gray-800  hover: text-violet-400"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -137,7 +137,7 @@ const Team = () => {
                   rel="noopener noreferrer"
                   to="/"
                   title="LinkedIn"
-                  className="dark:text-gray-900 hover:dark:text-violet-400"
+                  className=" text-gray-800  hover: text-violet-400"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -152,7 +152,7 @@ const Team = () => {
                   rel="noopener noreferrer"
                   to="/"
                   title="GitHub"
-                  className="dark:text-gray-900 hover:dark:text-violet-400"
+                  className=" text-gray-800  hover: text-violet-400"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -165,10 +165,10 @@ const Team = () => {
                 </Link>
               </div>
             </div>
-            <div className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 dark:bg-gray-100 dark:text-gray-800">
+            <div className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64  bg-gray-100  text-gray-800 ">
               <img
                 alt=""
-                className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500"
+                className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full    "
                 src="https://spunout.ie/wp-content/uploads/elementor/thumbs/iStock-157141027-pws9p2g5rxsg18vvoz8mdmukoj98im9nx5gpim9qk8.jpg"
               />
               <div className="flex-1 my-4">
@@ -182,7 +182,7 @@ const Team = () => {
                   rel="noopener noreferrer"
                   to="/"
                   title="Email"
-                  className="dark:text-gray-900 hover:dark:text-violet-400"
+                  className=" text-gray-800  hover: text-violet-400"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -198,7 +198,7 @@ const Team = () => {
                   rel="noopener noreferrer"
                   to="/"
                   title="Twitter"
-                  className="dark:text-gray-900 hover:dark:text-violet-400"
+                  className=" text-gray-800  hover: text-violet-400"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -213,7 +213,7 @@ const Team = () => {
                   rel="noopener noreferrer"
                   to="/"
                   title="LinkedIn"
-                  className="dark:text-gray-900 hover:dark:text-violet-400"
+                  className=" text-gray-800  hover: text-violet-400"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -228,7 +228,7 @@ const Team = () => {
                   rel="noopener noreferrer"
                   to="/"
                   title="GitHub"
-                  className="dark:text-gray-900 hover:dark:text-violet-400"
+                  className=" text-gray-800  hover: text-violet-400"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -241,10 +241,10 @@ const Team = () => {
                 </Link>
               </div>
             </div>
-            <div className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 dark:bg-gray-100 dark:text-gray-800">
+            <div className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64  bg-gray-100  text-gray-800 ">
               <img
                 alt=""
-                className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500"
+                className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full    "
                 src="https://spunout.ie/wp-content/uploads/elementor/thumbs/iStock-157141027-pws9p2g5rxsg18vvoz8mdmukoj98im9nx5gpim9qk8.jpg"
               />
               <div className="flex-1 my-4">
@@ -258,7 +258,7 @@ const Team = () => {
                   rel="noopener noreferrer"
                   to="/"
                   title="Email"
-                  className="dark:text-gray-900 hover:dark:text-violet-400"
+                  className=" text-gray-800  hover: text-violet-400"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -274,7 +274,7 @@ const Team = () => {
                   rel="noopener noreferrer"
                   to="/"
                   title="Twitter"
-                  className="dark:text-gray-900 hover:dark:text-violet-400"
+                  className=" text-gray-800  hover: text-violet-400"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -289,7 +289,7 @@ const Team = () => {
                   rel="noopener noreferrer"
                   to="/"
                   title="LinkedIn"
-                  className="dark:text-gray-900 hover:dark:text-violet-400"
+                  className=" text-gray-800  hover: text-violet-400"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -304,7 +304,7 @@ const Team = () => {
                   rel="noopener noreferrer"
                   to="/"
                   title="GitHub"
-                  className="dark:text-gray-900 hover:dark:text-violet-400"
+                  className=" text-gray-800  hover: text-violet-400"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -317,10 +317,10 @@ const Team = () => {
                 </Link>
               </div>
             </div>
-            <div className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 dark:bg-gray-100 dark:text-gray-800">
+            <div className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64  bg-gray-100  text-gray-800 ">
               <img
                 alt=""
-                className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500"
+                className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full    "
                 src="https://spunout.ie/wp-content/uploads/elementor/thumbs/iStock-157141027-pws9p2g5rxsg18vvoz8mdmukoj98im9nx5gpim9qk8.jpg"
               />
               <div className="flex-1 my-4">
@@ -334,7 +334,7 @@ const Team = () => {
                   rel="noopener noreferrer"
                   to="/"
                   title="Email"
-                  className="dark:text-gray-900 hover:dark:text-violet-400"
+                  className=" text-gray-800  hover: text-violet-400"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -350,7 +350,7 @@ const Team = () => {
                   rel="noopener noreferrer"
                   to="/"
                   title="Twitter"
-                  className="dark:text-gray-900 hover:dark:text-violet-400"
+                  className=" text-gray-800  hover: text-violet-400"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -365,7 +365,7 @@ const Team = () => {
                   rel="noopener noreferrer"
                   to="/"
                   title="LinkedIn"
-                  className="dark:text-gray-900 hover:dark:text-violet-400"
+                  className=" text-gray-800  hover: text-violet-400"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -380,7 +380,7 @@ const Team = () => {
                   rel="noopener noreferrer"
                   to="/"
                   title="GitHub"
-                  className="dark:text-gray-900 hover:dark:text-violet-400"
+                  className=" text-gray-800  hover: text-violet-400"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -393,10 +393,10 @@ const Team = () => {
                 </Link>
               </div>
             </div>
-            <div className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 dark:bg-gray-100 dark:text-gray-800">
+            <div className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64  bg-gray-100  text-gray-800 ">
               <img
                 alt=""
-                className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500"
+                className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full    "
                 src="https://spunout.ie/wp-content/uploads/elementor/thumbs/iStock-157141027-pws9p2g5rxsg18vvoz8mdmukoj98im9nx5gpim9qk8.jpg"
               />
               <div className="flex-1 my-4">
@@ -410,7 +410,7 @@ const Team = () => {
                   rel="noopener noreferrer"
                   to="/"
                   title="Email"
-                  className="dark:text-gray-900 hover:dark:text-violet-400"
+                  className=" text-gray-800  hover: text-violet-400"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -426,7 +426,7 @@ const Team = () => {
                   rel="noopener noreferrer"
                   to="/"
                   title="Twitter"
-                  className="dark:text-gray-900 hover:dark:text-violet-400"
+                  className=" text-gray-800  hover: text-violet-400"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -441,7 +441,7 @@ const Team = () => {
                   rel="noopener noreferrer"
                   to="/"
                   title="LinkedIn"
-                  className="dark:text-gray-900 hover:dark:text-violet-400"
+                  className=" text-gray-800  hover: text-violet-400"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -456,7 +456,7 @@ const Team = () => {
                   rel="noopener noreferrer"
                   to="/"
                   title="GitHub"
-                  className="dark:text-gray-900 hover:dark:text-violet-400"
+                  className=" text-gray-800  hover: text-violet-400"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

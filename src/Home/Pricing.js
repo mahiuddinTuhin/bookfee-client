@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Pricing = () => {
   return (
     <div>
-      <section className="py-20 bg-gray-800 text-gray-100">
+      <section className="py-20    text-white">
         <div className="container px-4 mx-auto">
           <div className="max-w-2xl mx-auto mb-16 text-center">
             <span className="font-bold tracking-wider uppercase text-violet-400">
@@ -21,11 +21,11 @@ const Pricing = () => {
                   <h4 className="text-2xl font-bold">Beginner</h4>
                   <span className="text-6xl font-bold">Free</span>
                 </div>
-                <p className="mt-3 leading-relaxed text-gray-400">
+                <p className="mt-3 leading-relaxed text-white ">
                   Claim your free services in order to get access of some nice
                   books.
                 </p>
-                <ul className="flex-1 mb-6 text-gray-400">
+                <ul className="flex-1 mb-6 text-white ">
                   <li className="flex mb-2 space-x-2">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -74,14 +74,14 @@ const Pricing = () => {
                 </ul>
                 <button
                   type="button"
-                  className="inline-block px-5 py-3 font-semibold tracking-wider text-center rounded bg-violet-400 text-gray-900"
+                  className="inline-block px-5 py-3 font-semibold tracking-wider text-center rounded bg-violet-400 text-white "
                 >
                   Get Started
                 </button>
               </div>
             </div>
             <div className="flex w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0">
-              <div className="flex flex-col p-6 space-y-6 rounded shadow sm:p-8 bg-violet-400 text-gray-900">
+              <div className="flex flex-col p-6 space-y-6 rounded shadow sm:p-8 bg-violet-400 text-white ">
                 <div className="space-y-2">
                   <h4 className="text-2xl font-bold">Pro</h4>
                   <span className="text-6xl font-bold">
@@ -157,7 +157,7 @@ const Pricing = () => {
                 <Link
                   rel="noopener noreferrer"
                   to="/"
-                  className="inline-block w-full px-5 py-3 font-bold tracking-wider text-center rounded bg-gray-800 text-violet-400"
+                  className="inline-block w-full px-5 py-3 font-bold tracking-wider text-center rounded    text-violet-400"
                 >
                   Get Started
                 </Link>
@@ -172,11 +172,11 @@ const Pricing = () => {
                     <span className="text-sm tracking-wide">/month</span>
                   </span>
                 </div>
-                <p className="leading-relaxed text-gray-400">
+                <p className="leading-relaxed text-white ">
                   Claim your Team services in order to get access the ultimate
                   resources of some super collection of books.
                 </p>
-                <ul className="space-y-2 text-gray-400">
+                <ul className="space-y-2 text-white ">
                   <li className="flex items-start space-x-2">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -256,7 +256,7 @@ const Pricing = () => {
                 <Link
                   rel="noopener noreferrer"
                   to="/"
-                  className="inline-block w-full px-5 py-3 font-semibold tracking-wider text-center rounded bg-violet-400 text-gray-900"
+                  className="inline-block w-full px-5 py-3 font-semibold tracking-wider text-center rounded bg-violet-400 text-white "
                 >
                   Get Started
                 </Link>

@@ -54,7 +54,7 @@ const Book = ({ b }) => {
               />
             </div>
 
-            <div className="flex flex-col text-gray-600">
+            <div className="flex flex-col  text-gray-800 ">
               <p className="pt-4 text-2xl font-bold text-black">{b?.name}</p>
               <hr className="hr-text" data-content="" />
               <div className="text-md flex flex-wrap md:flex-nowrap text-center justify-between px-4 my-2">
@@ -66,7 +66,7 @@ const Book = ({ b }) => {
               <p className="flex text-md px-4 my-2">
                 Rating: {b?.ratings}/5
                 <span className="font-bold px-2">|</span>
-                Mood: Dark
+                Mood:
               </p>
               <div className="text-md flex justify-between px-4 my-2">
                 <span className="font-bold">
@@ -81,17 +81,15 @@ const Book = ({ b }) => {
                 In Gotham City, mentally troubled comedian Arthur Fleck is
                 disregarded and mistreated by society. He then embarks on a
                 downward spiral of revolution and bloody crime. This path brings
-                him face-to-face with his alter-ego: the Joker.{" "}
+                him face-to-face with his alter-ego: the Joker.
               </p>
-              <p className="font-bold text-gray-800 mb-4">
-                Writer: {b?.writer}
-              </p>
+              <p className="font-bold    mb-4">Writer: {b?.writer}</p>
 
               <div className="text-xs">
                 <button
                   onClick={() => setShowModal(true)}
                   type="button"
-                  className="border border-gray-800 text-gray-700 font-bold rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:text-gray-100 hover:bg-gray-900 focus:outline-none focus:shadow-outline"
+                  className="border border-gray-800    font-bold rounded-md px-4 py-2 m-2 transition duration-500 ease select-none  hover:text-gray-100   hover:bg-gray-900 focus:outline-none focus:shadow-outline"
                 >
                   Order NOW
                 </button>
@@ -114,7 +112,7 @@ const Book = ({ b }) => {
                           <div className="relative p-6 flex-auto">
                             <div>
                               <section
-                                className="p-6 dark:bg-gray-800 dark:text-gray-50"
+                                className="p-6        "
                                 style={{
                                   backgroundImage: `url(${b?.image})`,
                                 }}
@@ -127,9 +125,9 @@ const Book = ({ b }) => {
                                   action=""
                                   className="container flex flex-col mx-auto space-y-12 ng-untouched ng-pristine ng-valid "
                                 >
-                                  <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm dark:bg-gray-900  opacity-90">
+                                  <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm  bg-gray-900  opacity-90">
                                     <div className="space-y-2 col-span-full lg:col-span-1">
-                                      <p className="text-xl">
+                                      <p className="text-xl text-white">
                                         Personal Inormation
                                       </p>
                                       <p className="text-xs text-left text-slate-300">
@@ -146,7 +144,7 @@ const Book = ({ b }) => {
                                           type="text"
                                           name="fullName"
                                           placeholder="Full Name"
-                                          className="py-1 pl-2 mt-2 w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
+                                          className=" text-gray-200 py-1 pl-2 mt-2 w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400  border-gray-700    "
                                         />
                                       </div>
                                       <div className="col-span-full sm:col-span-3">
@@ -158,7 +156,7 @@ const Book = ({ b }) => {
                                           placeholder="Email"
                                           name="email"
                                           defaultValue={user?.email}
-                                          className="py-1 pl-2 mt-2 w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
+                                          className=" text-gray-400 py-1 pl-2 mt-2 w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400  border-gray-700    "
                                           data-temp-mail-org="0"
                                         />
                                       </div>
@@ -169,7 +167,7 @@ const Book = ({ b }) => {
                                           name="profession"
                                           type="text"
                                           placeholder="profession"
-                                          className="py-1 pl-2 mt-2 w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
+                                          className=" text-gray-200 py-1 pl-2 mt-2 w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400  border-gray-700    "
                                           data-temp-mail-org="0"
                                         />
                                       </div>
@@ -180,7 +178,7 @@ const Book = ({ b }) => {
                                           name="address"
                                           type="text"
                                           placeholder=""
-                                          className="py-1 pl-2 mt-2 w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
+                                          className=" text-gray-200 py-1 pl-2 mt-2 w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400  border-gray-700    "
                                         />
                                       </div>
                                       <div className="col-span-full sm:col-span-2">
@@ -190,7 +188,7 @@ const Book = ({ b }) => {
                                           name="phone"
                                           type="number"
                                           placeholder="+880140404040"
-                                          className="py-1 pl-2 mt-2 w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
+                                          className=" text-gray-200 py-1 pl-2 mt-2 w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400  border-gray-700    "
                                         />
                                       </div>
                                       <div className="col-span-full flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
@@ -202,7 +200,7 @@ const Book = ({ b }) => {
                                           Cancel order
                                         </button>
                                         <button
-                                          className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                          className="bg-emerald-500   active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                                           type="submit"
                                         >
                                           Order Now
@@ -226,14 +224,14 @@ const Book = ({ b }) => {
 
                 <button
                   type="button"
-                  className="border border-gray-400 text-gray-400 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-gray-900 focus:outline-none focus:shadow-outline"
+                  className="border border-gray-400    rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-gray-900 hover:text-gray-100 focus:outline-none focus:shadow-outline"
                 >
                   Reviews
                 </button>
 
                 <button
                   type="button"
-                  className="border border-gray-400 text-gray-400 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-gray-900 focus:outline-none focus:shadow-outline"
+                  className="border border-gray-400    rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-gray-900  hover:text-gray-100 focus:outline-none focus:shadow-outline"
                 >
                   AMAZON
                 </button>

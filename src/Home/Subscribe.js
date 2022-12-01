@@ -4,7 +4,7 @@ const Subscribe = () => {
   return (
     <div>
       <div
-        className="w-full bg-gray-500"
+        className="w-full "
         style={{
           backgroundImage: `url('https://source.unsplash.com/random/640x480')`,
           backgroundPosition: "center center",
@@ -13,10 +13,10 @@ const Subscribe = () => {
         }}
       >
         <div className="container flex flex-col flex-wrap content-center justify-center p-4 py-20 mx-auto md:p-10">
-          <h1 className="text-5xl antialiased font-semibold leading-none text-center text-gray-100">
+          <h1 className="text-5xl antialiased font-semibold leading-none text-center text-white">
             Get Our Updates
           </h1>
-          <p className="pt-2 pb-8 text-xl antialiased text-center text-gray-100">
+          <p className="pt-2 pb-8 text-xl antialiased text-center text-white">
             Find out about events and other news
           </p>
           <div className="flex flex-row">
@@ -28,7 +28,7 @@ const Subscribe = () => {
             />
             <button
               type="button"
-              className="w-2/5 p-3 font-semibold rounded-r-lg sm:w-1/3 bg-violet-400 text-gray-900"
+              className="w-2/5 p-3 font-semibold rounded-r-lg sm:w-1/3 bg-violet-400 text-white "
             >
               Subscribe
             </button>

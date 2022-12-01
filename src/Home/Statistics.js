@@ -3,7 +3,7 @@ import React from "react";
 const Statistics = () => {
   return (
     <div>
-      <section className="p-6 dark:bg-gray-800 dark:text-gray-100">
+      <section className="p-6      text-white">
         <div className="container mx-auto grid justify-center grid-cols-2 text-center lg:grid-cols-3">
           <div className="flex flex-col justify-start m-2 lg:m-6">
             <p className="text-4xl font-bold leading-none lg:text-6xl">50+</p>

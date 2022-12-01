@@ -44,7 +44,7 @@ export const Signup = () => {
                 Be Bookfee <br className="hidden md:block" />
                 to pursue your knowledge
               </h2>
-              <p className="max-w-xl mb-4 text-base text-gray-200 md:text-lg">
+              <p className="max-w-xl mb-4 text-base text-white  md:text-lg">
                 Time to uprise the level of your knowledge with the stream of
                 changing world. Only knowledge can uprise you to the highest
                 position.
@@ -116,7 +116,7 @@ export const Signup = () => {
                       Login
                     </Link>
                   </p>
-                  <p className="text-xs text-gray-600 sm:text-sm">
+                  <p className="text-xs text-white  sm:text-sm">
                     We respect your privacy. We never share your private
                     information.
                   </p>

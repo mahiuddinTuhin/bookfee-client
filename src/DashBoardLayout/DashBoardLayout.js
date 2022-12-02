@@ -1,25 +1,11 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { UserContext } from "../allContext/MyContext";
 import Footer from "../Components/Footer/Footer";
 import Navbar from "../Components/Navbar/Navbar";
 const DashBoardLayout = () => {
-  const { loggedInUser, setLoggedInUser, user } = useContext(UserContext);
+  const { loggedInUser } = useContext(UserContext);
 
-  // getting current user
-  useEffect(() => {
-    fetch(`http://localhost:5000/currentUser/${user?.email}`, {
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setLoggedInUser(data);
-        console.log(data);
-      });
-  }, [user?.email, setLoggedInUser]);
-  console.log(loggedInUser);
   return (
     <div>
       <Navbar />
@@ -42,6 +28,21 @@ const DashBoardLayout = () => {
             {loggedInUser?.role === "admin" ? (
               <li>
                 <Link to="/dashboard/alluser">All User</Link>
+              </li>
+            ) : null}
+            {loggedInUser?.userType === "buyer" ? (
+              <li>
+                <Link to="/dashboard/myOrders">My Orders</Link>
+              </li>
+            ) : null}
+            {loggedInUser?.userType === "seller" ? (
+              <li>
+                <Link to="/dashboard/addproducts">Add Products</Link>
+              </li>
+            ) : null}
+            {loggedInUser?.userType === "seller" ? (
+              <li>
+                <Link to="/dashboard/myBuyers">My Buyers</Link>
               </li>
             ) : null}
           </ul>

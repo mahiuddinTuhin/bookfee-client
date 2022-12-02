@@ -66,7 +66,6 @@ export const Signup = () => {
           .catch((err) => console.log(err));
       })
       .catch((err) => console.log(err));
-    // navigate("/");
   };
 
   // Sign up with google pop up

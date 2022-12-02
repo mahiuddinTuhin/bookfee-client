@@ -2,13 +2,27 @@ import { Menu, MenuButton, MenuItem } from "@szhsin/react-menu";
 import "@szhsin/react-menu/dist/index.css";
 import "@szhsin/react-menu/dist/transitions/slide.css";
 import { useQuery } from "@tanstack/react-query";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { TfiReddit } from "react-icons/tfi";
 import { Link, NavLink } from "react-router-dom";
 import { UserContext } from "../../allContext/MyContext";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { logout, user } = useContext(UserContext);
+  const { logout, user, loggedInUser, setLoggedInUser } =
+    useContext(UserContext);
+
+  // getting current user
+  useEffect(() => {
+    fetch(`http://localhost:5000/currentUser/${user?.email}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setLoggedInUser(data);
+      });
+  }, [user?.email, setLoggedInUser]);
 
   // using react query
   const { data: categories = [] } = useQuery({
@@ -35,6 +49,31 @@ const Navbar = () => {
           Profile
         </NavLink>
       </li>
+      {loggedInUser?.userType === "buyer" ? (
+        <li>
+          <Link
+            to="/dashboard/myOrders"
+            aria-label="my orders"
+            title="my orders"
+            className="font-medium tracking-wide text-gray-700  transition-colors duration-200 hover:text-purple-400"
+          >
+            My Orders
+          </Link>
+        </li>
+      ) : null}
+      {loggedInUser?.userType === "seller" ? (
+        <li>
+          <Link
+            to="/dashboard/addProducts"
+            aria-label="add products"
+            title="add products"
+            className="font-medium tracking-wide text-gray-700  transition-colors duration-200 hover:text-purple-400"
+          >
+            Add Products
+          </Link>
+        </li>
+      ) : null}
+
       <li>
         <NavLink
           to="/dashboard"
@@ -118,16 +157,7 @@ const Navbar = () => {
               </Menu>
             </div>
           </li>
-          <li>
-            <Link
-              to="/"
-              aria-label="Product pricing"
-              title="Product pricing"
-              className="font-medium tracking-wide text-gray-700  transition-colors duration-200 hover:text-purple-400"
-            >
-              Pricing
-            </Link>
-          </li>
+
           <li>
             <Link
               to="/blog"

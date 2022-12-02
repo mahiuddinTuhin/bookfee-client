@@ -1,8 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
+import AdminRoute from "../Components/PrivateRoute/AdminRoute";
+import BuyerRoute from "../Components/PrivateRoute/BuyerRoute";
 import PrivateRoute from "../Components/PrivateRoute/PrivateRoute";
+import SellerRoute from "../Components/PrivateRoute/SellerRoute";
+import AddProducts from "../DashBoardLayout/AddProducts/AddProducts";
 import AllBooks from "../DashBoardLayout/Alluser/AllBooks";
 import Alluser from "../DashBoardLayout/Alluser/Alluser";
+import MyOrders from "../DashBoardLayout/Alluser/MyOrders/MyOrders";
 import DashBoardLayout from "../DashBoardLayout/DashBoardLayout";
+import MyBuyers from "../DashBoardLayout/MyBuyers/MyBuyers";
 import Home from "../Home/Home";
 import Main from "../Layout/Main";
 import Error404 from "../Pages/404/Error404";
@@ -73,7 +79,35 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/alluser",
-        element: <Alluser></Alluser>,
+        element: (
+          <AdminRoute>
+            <Alluser></Alluser>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/myOrders",
+        element: (
+          <BuyerRoute>
+            <MyOrders></MyOrders>
+          </BuyerRoute>
+        ),
+      },
+      {
+        path: "/dashboard/addProducts",
+        element: (
+          <SellerRoute>
+            <AddProducts></AddProducts>
+          </SellerRoute>
+        ),
+      },
+      {
+        path: "/dashboard/mybuyers",
+        element: (
+          <SellerRoute>
+            <MyBuyers />
+          </SellerRoute>
+        ),
       },
     ],
   },

@@ -1,11 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 import { UserContext } from "../../allContext/MyContext";
 
 const AddProducts = () => {
   const { user } = useContext(UserContext);
   const [catId, setCatId] = useState("");
   const [catName, setCatName] = useState("");
+  const navigate = useNavigate();
   // using react query
   const { data: categories = [] } = useQuery({
     queryKey: ["categories"],
@@ -29,24 +32,75 @@ const AddProducts = () => {
     const bought = form.date.value;
     const phone = form.phone.value;
     const location = form.location.value;
-    const postTime = "";
+    const postTime = new Date().toJSON().slice(0, 10);
     const condition = form.condition.value;
 
-    const sellerName = form.name.value;
-    const verified = "true";
+    const name = form.name.value;
+    const sellerName = form.sellerName.value;
+    const verified = "false";
     const bookCat = catName;
-    const ratings = "4.4";
+    const ratings = "";
     const cat_id = catId;
     const writer = form.writerName.value;
     const intro = form.intro.value;
-      const sellerEmail = user?.email;
-      
-      
+    const sellerEmail = user?.email;
+    // console.log({
+    //   image,
+    //   resalePrice,
+    //   originalPrice,
+    //   bought,
+    //   phone,
+    //   location,
+    //   postTime,
+    //   condition,
+    //   sellerName,
+    //   sellerEmail,
+    //   verified,
+    //   bookCat,
+    //   ratings,
+    //   cat_id,
+    //   writer,
+    //   intro,
+    //   name,
+    // });
+    fetch("http://localhost:5000/addbook", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify({
+        image,
+        resalePrice,
+        originalPrice,
+        bought,
+        phone,
+        location,
+        postTime,
+        condition,
+        sellerName,
+        sellerEmail,
+        verified,
+        bookCat,
+        ratings,
+        cat_id,
+        writer,
+        intro,
+        name,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        toast("successfully add the book for sell");
+        console.log("successfully add the book for sell", data);
+        navigate("/dashboard/myproducts");
+      });
   };
 
   return (
     <div>
       <section className="p-6 dark:text-gray-100">
+        <ToastContainer />
         <form
           onSubmit={(event) => handleAddProduct(event)}
           noValidate=""
@@ -57,13 +111,13 @@ const AddProducts = () => {
           </h2>
           <div>
             <label htmlFor="name" className="block mb-1 ml-1">
-              Name
+              Book Name
             </label>
             <input
               id="name"
               name="name"
               type="text"
-              placeholder="Your name"
+              placeholder="Book name"
               required=""
               className="block w-full p-2 rounded focus:outline-none focus:ring focus:ring-opacity-25 focus:ring-violet-400 dark:bg-gray-800"
             />
@@ -230,12 +284,25 @@ const AddProducts = () => {
               className="block w-full p-2 rounded autoexpand focus:outline-none focus:ring focus:ring-opacity-25 focus:ring-violet-400 dark:bg-gray-800"
             ></input>
           </div>
+          {/* book seller name */}
+          <div>
+            <label htmlFor="sellerName" className="block mb-1 ml-1">
+              Seller Name
+            </label>
+            <input
+              id="sellerName"
+              name="sellerName"
+              type="text"
+              placeholder="seller Name"
+              className="block w-full p-2 rounded autoexpand focus:outline-none focus:ring focus:ring-opacity-25 focus:ring-violet-400 dark:bg-gray-800"
+            ></input>
+          </div>
           <div>
             <button
               type="submit"
               className="w-full px-4 py-2 font-bold rounded shadow focus:outline-none focus:ring hover:ring focus:ring-opacity-50 dark:bg-violet-400 focus:ring-violet-400 hover:ring-violet-400 dark:text-gray-900"
             >
-              Send
+              Submit
             </button>
           </div>
         </form>

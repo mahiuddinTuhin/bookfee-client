@@ -30,6 +30,16 @@ const DashBoardLayout = () => {
                 <Link to="/dashboard/alluser">All User</Link>
               </li>
             ) : null}
+            {loggedInUser?.role === "admin" ? (
+              <li>
+                <Link to="/dashboard/allseller">All Seller</Link>
+              </li>
+            ) : null}
+            {loggedInUser?.role === "admin" ? (
+              <li>
+                <Link to="/dashboard/allbuyer">All Buyer</Link>
+              </li>
+            ) : null}
             {loggedInUser?.userType === "buyer" ? (
               <li>
                 <Link to="/dashboard/myOrders">My Orders</Link>
@@ -43,6 +53,11 @@ const DashBoardLayout = () => {
             {loggedInUser?.userType === "seller" ? (
               <li>
                 <Link to="/dashboard/myBuyers">My Buyers</Link>
+              </li>
+            ) : null}
+            {loggedInUser?.userType === "seller" ? (
+              <li>
+                <Link to="/dashboard/myproducts">My Products</Link>
               </li>
             ) : null}
           </ul>

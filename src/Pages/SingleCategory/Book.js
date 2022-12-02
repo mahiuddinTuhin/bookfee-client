@@ -1,11 +1,14 @@
 import React, { useContext, useState } from "react";
 import { MdOutlineVerifiedUser, MdVerifiedUser } from "react-icons/md";
+import { Navigate } from "react-router-dom";
 import { UserContext } from "../../allContext/MyContext";
 import "./book.css";
 const Book = ({ b }) => {
   const [showModal, setShowModal] = useState(false);
   const { user } = useContext(UserContext);
   // console.log(b);
+  const { sellerEmail, _id, resalePrice, name: bookName } = b;
+  const bookId = _id;
 
   const email = user?.email;
 
@@ -13,32 +16,42 @@ const Book = ({ b }) => {
   const handleOrderConfirm = (e) => {
     // getting form value
     const form = e?.target;
-    const name = form?.name?.value;
-    const address = form?.address?.value;
-    const phone = form?.phone?.value;
-    const profession = form?.profession?.value;
+    const buyerName = form?.name?.value;
+    const buyerAddress = form?.address?.value;
+    const buyerPhone = form?.phone?.value;
+    const buyerProfession = form?.profession?.value;
+    const buyerEmail = form?.email.value;
 
     // fetch to store the data in database on the behalf of the user's database
 
-    fetch(`http://localhost:5000/user/${email}`, {
+    fetch(`http://localhost:5000/userOrder`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify({ name, address, phone, profession, b }),
+      body: JSON.stringify({
+        buyerName,
+        buyerAddress,
+        buyerPhone,
+        buyerProfession,
+        sellerEmail,
+        bookId,
+        buyerEmail,
+        resalePrice,
+        bookName,
+      }),
     })
-      .then((res) => {
-        console.log(res.status);
-        return res.json();
-      })
-      .then((data) => console.log(data));
-
-    console.log("fetch crossed");
-    setShowModal(false);
+      .then((res) => res.json())
+      .then((data) => {
+        alert("successfull");
+        console.log(data);
+      });
+    Navigate("/");
   };
 
   return (
     <div className="my-24 w-full">
+      <div>{/* <Toaster /> */}</div>
       <div className=" grid place-items-center font-mono bg-gray-900">
         <div
           className="bg-white rounded-md 
@@ -139,7 +152,7 @@ const Book = ({ b }) => {
                                     <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
                                       <div className="col-span-full sm:col-span-3">
                                         <input
-                                          required
+                                          // required
                                           id="fullName"
                                           type="text"
                                           name="fullName"
@@ -150,7 +163,7 @@ const Book = ({ b }) => {
                                       <div className="col-span-full sm:col-span-3">
                                         <input
                                           id="email"
-                                          required
+                                          // required
                                           type="email"
                                           disabled
                                           placeholder="Email"
@@ -162,7 +175,7 @@ const Book = ({ b }) => {
                                       </div>
                                       <div className="col-span-full sm:col-span-3">
                                         <input
-                                          required
+                                          // required
                                           id="profession"
                                           name="profession"
                                           type="text"
@@ -173,7 +186,7 @@ const Book = ({ b }) => {
                                       </div>
                                       <div className="col-span-full">
                                         <input
-                                          required
+                                          // required
                                           id="address"
                                           name="address"
                                           type="text"
@@ -183,7 +196,7 @@ const Book = ({ b }) => {
                                       </div>
                                       <div className="col-span-full sm:col-span-2">
                                         <input
-                                          required
+                                          // required
                                           id="phone"
                                           name="phone"
                                           type="number"
@@ -203,7 +216,7 @@ const Book = ({ b }) => {
                                           className="bg-emerald-500   active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                                           type="submit"
                                         >
-                                          Order Now
+                                          Confirm Order
                                         </button>
                                       </div>
                                     </div>

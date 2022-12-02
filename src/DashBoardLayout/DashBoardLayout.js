@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
+import { UserContext } from "../allContext/MyContext";
 import Footer from "../Components/Footer/Footer";
 import Navbar from "../Components/Navbar/Navbar";
 const DashBoardLayout = () => {
+  const { loggedInUser, setLoggedInUser, user } = useContext(UserContext);
+
+  // getting current user
+  useEffect(() => {
+    fetch(`http://localhost:5000/currentUser/${user?.email}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setLoggedInUser(data);
+        console.log(data);
+      });
+  }, [user?.email, setLoggedInUser]);
+  console.log(loggedInUser);
   return (
     <div>
       <Navbar />
@@ -21,9 +38,12 @@ const DashBoardLayout = () => {
             <li>
               <Link to="/dashboard">All Books</Link>
             </li>
-            <li>
-              <Link to="/dashboard/alluser">All User</Link>
-            </li>
+
+            {loggedInUser?.role === "admin" ? (
+              <li>
+                <Link to="/dashboard/alluser">All User</Link>
+              </li>
+            ) : null}
           </ul>
         </div>
       </div>

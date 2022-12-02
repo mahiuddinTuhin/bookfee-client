@@ -27,6 +27,7 @@ const MyContext = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState("");
   const [user, setUser] = useState("");
+  const [loggedInUser, setLoggedInUser] = useState("");
 
   // function to create user with email and password
   const signInWithEmail = (email, password) => {
@@ -72,7 +73,6 @@ const MyContext = ({ children }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
         if (data.accessToken) {
           localStorage.setItem("accessToken", data.accessToken);
           // Navigate(from, { replace: true });
@@ -103,6 +103,8 @@ const MyContext = ({ children }) => {
     facebookSignIn,
     updateUser,
     getUserToken,
+    loggedInUser,
+    setLoggedInUser,
   };
   return (
     <div>

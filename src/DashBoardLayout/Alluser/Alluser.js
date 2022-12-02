@@ -1,10 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useContext } from "react";
 import { toast, ToastContainer } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
+import { UserContext } from "../../allContext/MyContext";
 
 const Alluser = () => {
+  const { user } = useContext(UserContext);
+
   const { data: allUser = [], refetch } = useQuery({
     queryKey: ["allUser"],
     queryFn: async () => {
@@ -14,9 +17,14 @@ const Alluser = () => {
     },
   });
 
-  const handleMakeAdin = (id) => {
-    fetch(`http://localhost:5000/user/admin/${id}`, {
+  const handleMakeAdin = ({ _id }) => {
+    const email = user.email;
+    fetch(`http://localhost:5000/user/admin/${_id}`, {
       method: "PUT",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        email: email,
+      },
     })
       .then((res) => res.json())
       .then((data) => {
@@ -55,7 +63,7 @@ const Alluser = () => {
                     <td>
                       {!user?.role ? (
                         <button
-                          onClick={() => handleMakeAdin(user?._id)}
+                          onClick={() => handleMakeAdin(user)}
                           className="btn btn-xs btn-primary"
                         >
                           Make Admin

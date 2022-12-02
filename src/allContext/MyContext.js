@@ -7,6 +7,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { app } from "./Authentication";
@@ -26,6 +27,7 @@ const MyContext = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState("");
   const [user, setUser] = useState("");
+
   // function to create user with email and password
   const signInWithEmail = (email, password) => {
     setLoading(true);
@@ -35,6 +37,12 @@ const MyContext = ({ children }) => {
   const createUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
+  };
+
+  // update User name
+  const updateUser = (name) => {
+    setLoading(true);
+    return updateProfile(auth.currentUser, name);
   };
 
   // google sign in function
@@ -53,6 +61,23 @@ const MyContext = ({ children }) => {
   const logout = () => {
     setLoading(true);
     return signOut(auth);
+  };
+
+  // get user token to verify authorization
+  const getUserToken = (email) => {
+    fetch(`http://localhost:5000/jwt?email=${email}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.accessToken) {
+          localStorage.setItem("accessToken", data.accessToken);
+          // Navigate(from, { replace: true });
+        }
+      });
   };
 
   useEffect(() => {
@@ -76,6 +101,8 @@ const MyContext = ({ children }) => {
     logout,
     googleSignIn,
     facebookSignIn,
+    updateUser,
+    getUserToken,
   };
   return (
     <div>

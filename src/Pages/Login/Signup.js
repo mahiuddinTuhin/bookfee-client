@@ -1,24 +1,97 @@
-import { useContext } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import React, { useContext, useState } from "react";
+// react icon
+import { FcGoogle } from "react-icons/fc";
+import { MdOutlineFacebook } from "react-icons/md";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { UserContext } from "../../allContext/MyContext";
-import img from "./../../docs/Telecommuting-pana.png";
+
+import img from "./../../docs/Lo-fi concept-bro.png";
+
 export const Signup = () => {
-  const { createUser, user } = useContext(UserContext);
+  const [userType, setUserType] = useState("");
+
+  const { createUser, googleSignIn, facebookSignIn, updateUser, getUserToken } =
+    useContext(UserContext);
+
   const navigate = useNavigate();
-  const handleSignUpSubmit = (event) => {
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || "/";
+
+  const addUserToDB = (email, userType, name) => {
+    fetch("http://localhost:5000/user", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify({ email, userType, name }),
+    })
+      .then((res) => {
+        console.log(res);
+        res.json();
+      })
+      .then((data) => {
+        console.log(data);
+        getUserToken(email);
+        navigate(from, { replace: true });
+      })
+      .catch((err) => {
+        console.log("err: ", err);
+      });
+  };
+
+  // Sign up with email and password handle
+  const handlesignupSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
+    const name = form.name.value;
     const password = form.password.value;
+
+    // signup with email and password with firebase Authentication system
     createUser(email, password)
-      .then((result) => console.log(result))
+      .then((result) => {
+        // const user = result.user;
+        toast("User Created Successfully");
+
+        const userInfo = {
+          displayName: name,
+        };
+        updateUser(userInfo)
+          .then(() => {
+            console.log("update user successfully");
+            addUserToDB(email, userType, name);
+          })
+          .catch((err) => console.log(err));
+      })
       .catch((err) => console.log(err));
-    navigate("/");
+    // navigate("/");
   };
 
-  if (user) {
-    return <Navigate to="/" />;
-  }
+  // Sign up with google pop up
+  const handleGooglesignup = () => {
+    return googleSignIn()
+      .then((result) => {
+        // post user detail in database
+        const email = result.user.email;
+        const type = "buyer";
+        addUserToDB(email, type);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  // Sign up with facebook pop up
+  const handleFacebooksignup = () => {
+    return facebookSignIn()
+      .then((result) => {
+        // post user detail in database
+        const email = result.user.email;
+        const type = "buyer";
+        addUserToDB(email, type);
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div className="relative">
@@ -38,7 +111,7 @@ export const Signup = () => {
           />
         </svg>
         <div className="relative px-4 py-16 mx-auto overflow-hidden sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-          <div className="flex flex-col items-center justify-between xl:flex-row">
+          <div className="flex flex-col items-center justify-between xl:flex-row-reverse">
             <div className="w-full max-w-xl mb-12 xl:mb-0 xl:pr-16 xl:w-7/12">
               <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-white sm:text-4xl sm:leading-none">
                 Be Bookfee <br className="hidden md:block" />
@@ -69,22 +142,105 @@ export const Signup = () => {
                 <h3 className="text-slate-900 mb-4 text-xl font-semibold sm:text-center sm:mb-6 sm:text-2xl">
                   Sign up
                 </h3>
-                <form onSubmit={(event) => handleSignUpSubmit(event)}>
+                <h3
+                  className="flex items-center justify-center 
+                text-gray-800 mb-4"
+                >
+                  Sign up with{" "}
+                  <span onClick={handleGooglesignup} className="ml-3 text-3xl">
+                    <FcGoogle />
+                  </span>
+                  <span
+                    onClick={handleFacebooksignup}
+                    className="ml-3 text-4xl text-blue-700"
+                  >
+                    <MdOutlineFacebook />
+                  </span>
+                </h3>
+                <form onSubmit={(event) => handlesignupSubmit(event)}>
+                  <div className="mb-1 sm:mb-2">
+                    <label
+                      htmlFor="name"
+                      className="text-slate-800 lg:text-xl inline-block mb-1 font-medium"
+                    >
+                      Full Name
+                    </label>
+                    <input
+                      placeholder="Raymond Johnson"
+                      required
+                      type="text"
+                      className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline text-gray-800"
+                      id="name"
+                      name="name"
+                    />
+                  </div>
                   <div className="mb-1 sm:mb-2">
                     <label
                       htmlFor="email"
                       className="text-slate-800 lg:text-xl inline-block mb-1 font-medium"
                     >
-                      E-mail
+                      Email
                     </label>
                     <input
-                      placeholder="john.doe@example.org"
+                      placeholder="john.raymon@outlook.com"
                       required
-                      type="text"
-                      className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
+                      type="email"
+                      className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline text-gray-800"
                       id="email"
                       name="email"
                     />
+                  </div>
+                  <div
+                    className="mb-1 sm:mb-2"
+                    onChange={(event) => setUserType(event.target.value)}
+                  >
+                    <div className="max-w-lg mx-auto ">
+                      <h2 className="text-slate-800 lg:text-xl inline-block mb-1 font-medium mt-4">
+                        Select Account type:{" "}
+                      </h2>
+                      <fieldset className="mb-5">
+                        <legend className="sr-only">userType</legend>
+
+                        <div className="flex items-center mb-4">
+                          <input
+                            required
+                            id="user-option-2"
+                            type="radio"
+                            name="userType"
+                            value="buyer"
+                            className="radio border-black checked:bg-gray-900"
+                            aria-labelledby="user-option-2"
+                            aria-describedby="user-option-2"
+                          />
+                          <label
+                            htmlFor="user-option-2"
+                            className="text-sm font-medium text-green-900  ml-2 block"
+                          >
+                            Buyer
+                          </label>
+                        </div>
+
+                        <div className="flex items-center mb-4">
+                          <input
+                            id="user-option-3"
+                            type="radio"
+                            name="userType"
+                            value="seller"
+                            className="radio border-black checked:bg-gray-900"
+                            aria-labelledby="user-option-3"
+                            aria-describedby="user-option-3"
+                          />
+                          <label
+                            htmlFor="user-option-3"
+                            className="text-sm font-medium   ml-2 block  text-gray-800"
+                          >
+                            Seller
+                          </label>
+                        </div>
+                      </fieldset>
+                    </div>
+
+                    <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
                   </div>
                   <div className="mb-1 sm:mb-2">
                     <label
@@ -97,7 +253,7 @@ export const Signup = () => {
                       placeholder="********"
                       required
                       type="password"
-                      className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
+                      className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline text-gray-800"
                       id="password"
                       name="password"
                     />
@@ -107,13 +263,13 @@ export const Signup = () => {
                       type="submit"
                       className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
                     >
-                      Signup
+                      signup
                     </button>
                   </div>
                   <p className="text-xs text-fuchsia-800 sm:text-sm mb-2">
-                    Already have an account ?{" "}
-                    <Link className="hover:text-green-600" to="/login">
-                      Login
+                    Create new account ?{" "}
+                    <Link className="hover:text-green-600" to="/signup">
+                      Signup
                     </Link>
                   </p>
                   <p className="text-xs text-white  sm:text-sm">
@@ -129,3 +285,5 @@ export const Signup = () => {
     </div>
   );
 };
+
+export default Signup;

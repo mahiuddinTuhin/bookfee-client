@@ -4,7 +4,7 @@ import { UserContext } from "../../allContext/MyContext";
 import Loading from "../Loading/Loading";
 
 const PrivateRoute = ({ children }) => {
-  const { user, setLoading, loading } = useContext(UserContext);
+  const { user, loading } = useContext(UserContext);
   const location = useLocation();
   if (loading) return <Loading />;
 

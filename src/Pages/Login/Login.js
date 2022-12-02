@@ -1,70 +1,35 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 // react icon
 import { FcGoogle } from "react-icons/fc";
 import { MdOutlineFacebook } from "react-icons/md";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { UserContext } from "../../allContext/MyContext";
-import Home from "../../Home/Home";
 import img from "./../../docs/Lo-fi concept-bro.png";
 
 const Login = () => {
-  const [userType, setUserType] = useState("");
-
-  const { signInWithEmail, user, googleSignIn, facebookSignIn } =
+  const { signInWithEmail, googleSignIn, facebookSignIn, getUserToken } =
     useContext(UserContext);
 
   const navigate = useNavigate();
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
 
-  const addUserToDB = (email, userType) => {
-    fetch("http://localhost:5000/user", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-      body: JSON.stringify({ email, userType }),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log("successful"));
-  };
-
   // sign in with email and password handle
   const handleLoginSubmit = (event) => {
     event.preventDefault();
-    const htmlForm = event.target;
-    const email = htmlForm.email.value;
+    const form = event.target;
+    const email = form.email.value;
 
-    const password = htmlForm.password.value;
+    const password = form.password.value;
 
     // signin with email and password with firebase Authentication system
     signInWithEmail(email, password)
       .then((result) => {
-        htmlForm.reset();
-
-        const currentUser = {
-          email: result.user.email,
-        };
         // getting jwt token
-        fetch("http://localhost:5000/jwt", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(currentUser),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            localStorage.setItem("token", data.token);
-            // post user detail in database
-            addUserToDB(email, userType);
-            // navigate to previous path
-            navigate(from, { replace: true });
-          });
+        getUserToken(email);
+        navigate(from, { replace: true });
       })
       .catch((err) => console.log(err));
-    // navigate("/");
   };
 
   // sign in with google pop up
@@ -73,8 +38,7 @@ const Login = () => {
       .then((result) => {
         // post user detail in database
         const email = result.user.email;
-        const type = "buyer";
-        addUserToDB(email, type);
+        getUserToken(email);
         navigate(from, { replace: true });
       })
       .catch((err) => console.log(err));
@@ -86,14 +50,14 @@ const Login = () => {
       .then((result) => {
         // post user detail in database
         const email = result.user.email;
-        const type = "buyer";
-        addUserToDB(email, type);
+
+        getUserToken(email);
         navigate(from, { replace: true });
       })
       .catch((err) => console.log(err));
   };
 
-  return !user ? (
+  return (
     <div className="relative">
       <img
         src={img}
@@ -174,58 +138,7 @@ const Login = () => {
                       name="email"
                     />
                   </div>
-                  <div
-                    className="mb-1 sm:mb-2"
-                    onChange={(event) => setUserType(event.target.value)}
-                  >
-                    <div className="max-w-lg mx-auto ">
-                      <h2 className="text-slate-800 lg:text-xl inline-block mb-1 font-medium mt-4">
-                        Select Account type:{" "}
-                      </h2>
-                      <fieldset className="mb-5">
-                        <legend className="sr-only">userType</legend>
 
-                        <div className="flex items-center mb-4">
-                          <input
-                            required
-                            id="user-option-2"
-                            type="radio"
-                            name="userType"
-                            value="buyer"
-                            className="radio border-black checked:bg-gray-900"
-                            aria-labelledby="user-option-2"
-                            aria-describedby="user-option-2"
-                          />
-                          <label
-                            htmlFor="user-option-2"
-                            className="text-sm font-medium text-green-900  ml-2 block"
-                          >
-                            Buyer
-                          </label>
-                        </div>
-
-                        <div className="flex items-center mb-4">
-                          <input
-                            id="user-option-3"
-                            type="radio"
-                            name="userType"
-                            value="seller"
-                            className="radio border-black checked:bg-gray-900"
-                            aria-labelledby="user-option-3"
-                            aria-describedby="user-option-3"
-                          />
-                          <label
-                            htmlFor="user-option-3"
-                            className="text-sm font-medium   ml-2 block  text-gray-800"
-                          >
-                            Seller
-                          </label>
-                        </div>
-                      </fieldset>
-                    </div>
-
-                    <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
-                  </div>
                   <div className="mb-1 sm:mb-2">
                     <label
                       htmlFor="password"
@@ -267,8 +180,6 @@ const Login = () => {
         </div>
       </div>
     </div>
-  ) : (
-    <Home />
   );
 };
 export default Login;

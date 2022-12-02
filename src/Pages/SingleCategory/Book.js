@@ -10,7 +10,7 @@ const Book = ({ b }) => {
   const { sellerEmail, _id, resalePrice, name: bookName } = b;
   const bookId = _id;
 
-  const email = user?.email;
+  // const email = user?.email;
 
   // handle order confirming btn
   const handleOrderConfirm = (e) => {

@@ -4,12 +4,10 @@ import Book from "./Book";
 
 const SingleCategory = () => {
   const books = useLoaderData();
-  // const { categories } = useContext(UserContext);
-  // const cat = categories.find();
 
   return (
     <div className="bg-gray-900 py-4">
-      {books && books?.map((b) => <Book key={b._id} b={b} />)}
+      {books ? books?.map((b, i) => <Book key={i} b={b} />) : null}
     </div>
   );
 };

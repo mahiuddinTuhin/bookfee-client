@@ -35,22 +35,23 @@ const Allbuyer = () => {
       });
   };
   const handleDeleteUser = (_id) => {
-    console.log("object");
-    // const email = user.email;
-    // fetch(`http://localhost:5000/deleteUser/${_id}`, {
-    //   method: "delete",
-    //   headers: {
-    //     "content-type": "application/json",
-    //     // authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-    //   },
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     if (data?.modifiedCount > 0) {
-    //       toast.success("Successfully made admin");
-    //       refetch();
-    //     }
-    //   });
+    const confirm = window.confirm("Are you sure? ");
+    if (confirm) {
+      fetch(`http://localhost:5000/deleteUser/${_id}`, {
+        method: "delete",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data?.deletedCount > 0) {
+            toast.success("Successfully delete user");
+            refetch();
+          }
+        });
+    }
   };
 
   return (

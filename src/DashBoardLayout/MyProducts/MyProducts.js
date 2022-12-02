@@ -20,13 +20,12 @@ const MyProducts = () => {
     },
   });
 
-  const handleMakeAdin = ({ _id }) => {
-    const email = user.email;
-    fetch(`http://localhost:5000/user/admin/${_id}`, {
+  const handleMakeAdvertise = (_id) => {
+    fetch(`http://localhost:5000/advertise/${_id}`, {
       method: "PUT",
       headers: {
+        "content-type": "application/json",
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        email: email,
       },
     })
       .then((res) => res.json())
@@ -40,7 +39,7 @@ const MyProducts = () => {
 
   return (
     <div>
-      <h2 className="my-4">All Products details</h2>
+      <h2 className="my-4">My Products details</h2>
       <div data-theme="cupcake">
         <ToastContainer />
         <div className="overflow-x-auto">
@@ -68,7 +67,7 @@ const MyProducts = () => {
                       <>
                         <td>
                           <button
-                            onClick={() => handleMakeAdin(product)}
+                            // onClick={() => handleMakeAdmin(product)}
                             className="btn btn-xs btn-primary"
                           >
                             not sold
@@ -76,7 +75,7 @@ const MyProducts = () => {
                         </td>
                         <td>
                           <button
-                            onClick={() => handleMakeAdin(product)}
+                            onClick={() => handleMakeAdvertise(product?._id)}
                             className="btn btn-xs btn-success"
                           >
                             Advertise

@@ -34,6 +34,25 @@ const Alluser = () => {
         }
       });
   };
+  const handleDeleteUser = (_id) => {
+    const confirm = window.confirm("Are you sure? ");
+    if (confirm) {
+      fetch(`http://localhost:5000/deleteUser/${_id}`, {
+        method: "delete",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data?.deletedCount > 0) {
+            toast.success("Successfully delete user");
+            refetch();
+          }
+        });
+    }
+  };
 
   return (
     <div>
@@ -75,7 +94,12 @@ const Alluser = () => {
                       )}
                     </td>
                     <td>
-                      <button className="btn btn-xs btn-outline">Delete</button>
+                      <button
+                        onClick={() => handleDeleteUser(user?._id)}
+                        className="btn btn-xs btn-outline"
+                      >
+                        Delete
+                      </button>
                     </td>
                   </tr>
                 );

@@ -72,7 +72,7 @@ const MyContext = ({ children }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.accessToken) {
           localStorage.setItem("accessToken", data.accessToken);
           // Navigate(from, { replace: true });

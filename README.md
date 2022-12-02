@@ -1,6 +1,40 @@
-# Getting Started with Create React App
+# BookFee
+
+#### An website to buy and sell old books
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+# admin email and password
+
+adminEmail: admin@admin.com
+adminPassword: admin1212
+
+## live link
+
+firebase: https://bookfee-e4a0e.web.app/
+
+## Technology used behind this website
+
+- react
+- react-dom
+- szhsin/react-menu
+- react-query
+- daisyui
+- firebase
+- react-hot-toast
+- react-icons
+- react-router-dom
+- react-scripts
+- react-toastify
+- web-vitals
+
+## Project features
+
+- User can order old book
+- Seller can post for book
+- Admin can delete user
+- Firebase-auth authentication system for signing in
+- different dashboard for different kind of user seller and admin
 
 ## Available Scripts
 
@@ -31,7 +65,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+_Note: this is a one-way operation. Once you `eject`, you can't go back!_
 
 If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 

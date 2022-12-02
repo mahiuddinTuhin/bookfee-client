@@ -30,7 +30,7 @@ const MyProducts = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data?.modifiedCount > 0) {
+        if (data?.upsertedCount > 0) {
           toast.success("Successfully made admin");
           refetch();
         }
@@ -76,7 +76,9 @@ const MyProducts = () => {
                         <td>
                           <button
                             onClick={() => handleMakeAdvertise(product?._id)}
-                            className="btn btn-xs btn-success"
+                            className={`btn btn-xs btn-success ${
+                              product?.advertise ? "text-red-700" : null
+                            }`}
                           >
                             Advertise
                           </button>

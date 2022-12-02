@@ -3,7 +3,7 @@ import React, { useContext, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { MdOutlineFacebook } from "react-icons/md";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import { UserContext } from "../../allContext/MyContext";
 
 import img from "./../../docs/Lo-fi concept-bro.png";
@@ -94,6 +94,7 @@ export const Signup = () => {
 
   return (
     <div className="relative">
+      <ToastContainer />
       <img
         src={img}
         className="absolute inset-0 object-cover w-full h-full"

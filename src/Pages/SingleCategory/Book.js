@@ -1,11 +1,13 @@
 import React, { useContext, useState } from "react";
 import { MdOutlineVerifiedUser, MdVerifiedUser } from "react-icons/md";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 import { UserContext } from "../../allContext/MyContext";
 import "./book.css";
 const Book = ({ b }) => {
   const [showModal, setShowModal] = useState(false);
   const { user } = useContext(UserContext);
+  const navigate = useNavigate();
   // console.log(b);
   const { sellerEmail, _id, resalePrice, name: bookName } = b;
   const bookId = _id;
@@ -43,15 +45,16 @@ const Book = ({ b }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        alert("successfull");
+        toast("successfull");
         console.log(data);
       });
-    Navigate("/");
+    navigate("/");
   };
 
   return (
     <div className="my-24 w-full">
       <div>{/* <Toaster /> */}</div>
+      <ToastContainer />
       <div className=" grid place-items-center font-mono bg-gray-900">
         <div
           className="bg-white rounded-md 

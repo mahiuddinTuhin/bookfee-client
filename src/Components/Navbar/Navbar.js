@@ -13,7 +13,7 @@ const Navbar = () => {
 
   // getting current user
   useEffect(() => {
-    fetch(`http://localhost:5000/currentUser/${user?.email}`, {
+    fetch(`https://bookfee-server.vercel.app/currentUser/${user?.email}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
@@ -28,7 +28,9 @@ const Navbar = () => {
   const { data: categories = [] } = useQuery({
     queryKey: ["categories"],
     queryFn: () =>
-      fetch("http://localhost:5000/booksCat").then((res) => res.json()),
+      fetch("https://bookfee-server.vercel.app/booksCat").then((res) =>
+        res.json()
+      ),
   });
 
   const handleLogout = () => {

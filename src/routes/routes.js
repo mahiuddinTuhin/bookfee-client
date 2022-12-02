@@ -59,7 +59,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: async ({ params }) => {
-          return fetch(`http://localhost:5000/category/${params.id}`, {
+          return fetch(`https://bookfee-server.vercel.app/category/${params.id}`, {
             headers: {
               authorization: `Bearer ${localStorage.getItem("accessToken")}`,
             },

@@ -26,7 +26,7 @@ const Book = ({ b }) => {
 
     // fetch to store the data in database on the behalf of the user's database
 
-    fetch(`http://localhost:5000/userOrder`, {
+    fetch(`https://bookfee-server.vercel.app/userOrder`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

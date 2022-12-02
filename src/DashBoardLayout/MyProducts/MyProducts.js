@@ -13,7 +13,7 @@ const MyProducts = () => {
     queryKey: ["myProducts"],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/myproducts/${user?.email}`
+        `https://bookfee-server.vercel.app/myproducts/${user?.email}`
       );
       const data = res.json();
       return data;
@@ -21,7 +21,7 @@ const MyProducts = () => {
   });
 
   const handleMakeAdvertise = (_id) => {
-    fetch(`http://localhost:5000/advertise/${_id}`, {
+    fetch(`https://bookfee-server.vercel.app/advertise/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

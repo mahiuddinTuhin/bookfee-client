@@ -13,7 +13,7 @@ const AddProducts = () => {
   const { data: categories = [] } = useQuery({
     queryKey: ["categories"],
     queryFn: () =>
-      fetch("http://localhost:5000/booksCat").then((res) => res.json()),
+      fetch("https://bookfee-server.vercel.app/booksCat").then((res) => res.json()),
   });
 
   const catChoose = (e) => {
@@ -63,7 +63,7 @@ const AddProducts = () => {
     //   intro,
     //   name,
     // });
-    fetch("http://localhost:5000/addbook", {
+    fetch("https://bookfee-server.vercel.app/addbook", {
       method: "POST",
       headers: {
         "content-type": "application/json",

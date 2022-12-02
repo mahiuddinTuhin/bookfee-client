@@ -19,7 +19,7 @@ export const Signup = () => {
   const from = location?.state?.from?.pathname || "/";
 
   const addUserToDB = (email, userType, name) => {
-    fetch("http://localhost:5000/user", {
+    fetch("https://bookfee-server.vercel.app/user", {
       method: "POST",
       headers: {
         "content-type": "application/json",

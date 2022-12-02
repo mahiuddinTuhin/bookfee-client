@@ -11,7 +11,7 @@ const Allseller = () => {
   const { data: allUser = [], refetch } = useQuery({
     queryKey: ["allUser"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/alluser");
+      const res = await fetch("https://bookfee-server.vercel.app/alluser");
       const data = res.json();
       return data;
     },
@@ -19,7 +19,7 @@ const Allseller = () => {
 
   const handleMakeAdin = ({ _id }) => {
     const email = user.email;
-    fetch(`http://localhost:5000/user/admin/${_id}`, {
+    fetch(`https://bookfee-server.vercel.app/user/admin/${_id}`, {
       method: "PUT",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -37,7 +37,7 @@ const Allseller = () => {
   const handleDeleteUser = (_id) => {
     const confirm = window.confirm("Are you sure? ");
     if (confirm) {
-      fetch(`http://localhost:5000/deleteUser/${_id}`, {
+      fetch(`https://bookfee-server.vercel.app/deleteUser/${_id}`, {
         method: "delete",
         headers: {
           "content-type": "application/json",

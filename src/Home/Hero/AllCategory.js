@@ -8,7 +8,7 @@ const AllCategory = () => {
   const { data: categories = [] } = useQuery({
     queryKey: ["categories"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/booksCat");
+      const res = await fetch("https://bookfee-server.vercel.app/booksCat");
       const data = await res.json();
       return data;
     },

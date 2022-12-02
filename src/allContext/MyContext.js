@@ -1,13 +1,13 @@
 import {
-  createUserWithEmailAndPassword,
-  FacebookAuthProvider,
-  getAuth,
-  GoogleAuthProvider,
-  onAuthStateChanged,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-  signOut,
-  updateProfile,
+    createUserWithEmailAndPassword,
+    FacebookAuthProvider,
+    getAuth,
+    GoogleAuthProvider,
+    onAuthStateChanged,
+    signInWithEmailAndPassword,
+    signInWithPopup,
+    signOut,
+    updateProfile
 } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { app } from "./Authentication";
@@ -66,7 +66,7 @@ const MyContext = ({ children }) => {
 
   // get user token to verify authorization
   const getUserToken = (email) => {
-    fetch(`http://localhost:5000/jwt?email=${email}`, {
+    fetch(`https://bookfee-server.vercel.app/jwt?email=${email}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },

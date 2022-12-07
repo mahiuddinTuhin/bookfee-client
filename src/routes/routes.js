@@ -20,6 +20,7 @@ import Login from "../Pages/Login/Login";
 import { Signup } from "../Pages/Login/Signup";
 import Profile from "../Pages/Profile/Profile";
 import SingleCategory from "../Pages/SingleCategory/SingleCategory";
+import Test from "../Pages/Test";
 
 const router = createBrowserRouter([
   {
@@ -59,11 +60,14 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: async ({ params }) => {
-          return fetch(`https://bookfee-server.vercel.app/category/${params.id}`, {
-            headers: {
-              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-            },
-          });
+          return fetch(
+            `https://bookfee-server.vercel.app/category/${params.id}`,
+            {
+              headers: {
+                authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+              },
+            }
+          );
         },
       },
     ],
@@ -141,6 +145,10 @@ const router = createBrowserRouter([
   {
     path: "/*",
     element: <Error404 />,
+  },
+  {
+    path: "/test",
+    element: <Test />,
   },
 ]);
 export default router;
